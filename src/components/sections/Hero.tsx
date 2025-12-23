@@ -11,98 +11,157 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative h-screen min-h-[800px] flex items-end overflow-hidden">
-      {/* Background Image */}
+    <section className="relative h-screen min-h-[900px] flex items-center overflow-hidden">
+      {/* Background Image with Parallax Effect */}
       <div className="absolute inset-0">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[1.5s]"
           style={{
             backgroundImage:
               "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2940&auto=format&fit=crop')",
+            transform: isLoaded ? "scale(1)" : "scale(1.1)",
+            transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)",
           }}
         />
-        {/* Layered overlays for depth */}
-        <div className="absolute inset-0 bg-void/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/50 to-transparent" />
+        {/* Sophisticated overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-void/80 via-void/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-void/60 via-transparent to-void/20" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container-luxury pb-32 md:pb-40">
-        <div className="max-w-2xl">
-          {/* Label */}
-          <div
-            className={`text-label text-paper/80 mb-8 transition-all duration-[1000ms] ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-            style={{ 
-              textShadow: "0 2px 8px rgba(0,0,0,0.6)",
-              transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
-            }}
-          >
-            Property Finder Service
+      {/* Decorative vertical line */}
+      <div 
+        className={`absolute left-[80px] top-1/2 -translate-y-1/2 w-px h-[200px] bg-gradient-to-b from-transparent via-gilt to-transparent transition-all duration-[1.2s] hidden lg:block ${
+          isLoaded ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0"
+        }`}
+        style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
+      />
+
+      {/* Main Content Grid */}
+      <div className="relative z-10 container-luxury">
+        <div className="grid lg:grid-cols-12 gap-8 items-center">
+          {/* Left Content */}
+          <div className="lg:col-span-7 lg:pl-12">
+            {/* Eyebrow / Label */}
+            <div
+              className={`flex items-center gap-4 mb-10 transition-all duration-[1000ms] ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ 
+                transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
+              }}
+            >
+              <span className="w-12 h-px bg-gilt" />
+              <span className="text-label text-gilt">
+                Property Finder Service
+              </span>
+            </div>
+
+            {/* Main Heading - Display XL per design system */}
+            <h1
+              className={`font-[family-name:var(--font-playfair)] text-5xl md:text-7xl lg:text-[96px] text-white leading-[1] tracking-[-0.03em] mb-10 transition-all duration-[1000ms] ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ 
+                transitionDelay: "150ms",
+                transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
+              }}
+            >
+              Luxury
+              <br />
+              <span className="text-gilt">Property</span>
+              <br />
+              <em className="font-normal not-italic">Experts</em>
+            </h1>
+
+            {/* Subtitle - Body Lead style */}
+            <p
+              className={`text-xl text-paper/70 max-w-lg leading-relaxed mb-14 transition-all duration-[1000ms] ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ 
+                transitionDelay: "300ms",
+                transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)",
+                letterSpacing: "0.01em"
+              }}
+            >
+              We handpick superior residences aligned with your vision. 
+              Experience Dubai&apos;s finest properties with white-glove service.
+            </p>
+
+            {/* CTAs */}
+            <div
+              className={`flex flex-wrap items-center gap-6 transition-all duration-[1000ms] ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ 
+                transitionDelay: "450ms",
+                transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
+              }}
+            >
+              <Link href="/properties" className="btn-primary bg-gilt text-void hover:bg-paper">
+                View Properties
+              </Link>
+              <Link href="/contact" className="btn-ghost border-paper/30 text-paper hover:bg-paper hover:text-void">
+                Book Consultation
+              </Link>
+            </div>
           </div>
 
-          {/* Main Heading */}
-          <h1
-            className={`font-[family-name:var(--font-playfair)] text-5xl md:text-6xl lg:text-[80px] text-paper leading-[1.05] tracking-[-0.03em] mb-8 transition-all duration-[1000ms] ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-            style={{ 
-              textShadow: "0 4px 20px rgba(0,0,0,0.4)",
-              transitionDelay: "100ms",
-              transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
-            }}
-          >
-            Luxury property
-            <br />
-            <em className="font-normal">experts</em>
-          </h1>
-
-          {/* Subtitle */}
-          <p
-            className={`text-lg text-paper/80 max-w-md leading-relaxed mb-12 transition-all duration-[1000ms] ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-            style={{ 
-              textShadow: "0 2px 8px rgba(0,0,0,0.4)",
-              transitionDelay: "200ms",
-              transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
-            }}
-          >
-            Elevate your living experience with our refined residences, we
-            handpick superior properties aligned with your outlook.
-          </p>
-
-          {/* CTAs */}
-          <div
-            className={`flex flex-wrap items-center gap-5 transition-all duration-[1000ms] ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-            style={{ 
-              transitionDelay: "300ms",
-              transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
-            }}
-          >
-            <Link href="/contact" className="btn-primary">
-              Get a quote
-            </Link>
-            <a
-              href="tel:+97145551234"
-              className="btn-ghost inline-flex items-center gap-3"
+          {/* Right Stats Panel - Editorial touch */}
+          <div className="lg:col-span-5 hidden lg:block">
+            <div 
+              className={`ml-auto max-w-xs space-y-8 transition-all duration-[1000ms] ${
+                isLoaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+              }`}
+              style={{ 
+                transitionDelay: "600ms",
+                transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
+              }}
             >
-              <svg
-                className="w-4 h-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1"
-              >
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
-              +971 4 555 1234
-            </a>
+              {/* Stats */}
+              <div className="border-l border-paper/20 pl-8">
+                <div className="text-5xl font-[family-name:var(--font-playfair)] text-paper mb-2">
+                  200<span className="text-gilt">+</span>
+                </div>
+                <div className="text-label text-paper/50">
+                  Premium Properties
+                </div>
+              </div>
+              
+              <div className="border-l border-paper/20 pl-8">
+                <div className="text-5xl font-[family-name:var(--font-playfair)] text-paper mb-2">
+                  AED 15<span className="text-gilt">B</span>
+                </div>
+                <div className="text-label text-paper/50">
+                  Total Value Sold
+                </div>
+              </div>
+
+              <div className="border-l border-paper/20 pl-8">
+                <div className="text-5xl font-[family-name:var(--font-playfair)] text-paper mb-2">
+                  12<span className="text-gilt">+</span>
+                </div>
+                <div className="text-label text-paper/50">
+                  Years of Excellence
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div 
+        className={`absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 transition-all duration-[1000ms] ${
+          isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}
+        style={{ 
+          transitionDelay: "800ms",
+          transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
+        }}
+      >
+        <span className="text-label text-paper/40">Scroll</span>
+        <div className="w-px h-12 bg-gradient-to-b from-paper/40 to-transparent animate-pulse" />
       </div>
     </section>
   );
