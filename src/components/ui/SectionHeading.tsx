@@ -15,7 +15,7 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   const alignClasses = align === "center" ? "text-center" : "text-left";
   const labelColor = theme === "dark" ? "text-paper/50" : "text-stone";
-  const titleColor = theme === "dark" ? "text-paper" : "text-void";
+  const titleColor = theme === "dark" ? "text-white" : "text-void";
   const subtitleColor = theme === "dark" ? "text-paper/60" : "text-stone";
 
   return (

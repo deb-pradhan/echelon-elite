@@ -7,6 +7,7 @@ const navLinks = [
   { href: "/properties", label: "Properties" },
   { href: "/about", label: "About" },
   { href: "/golden-visa", label: "Golden Visa" },
+  { href: "/blog", label: "Journal" },
   { href: "/contact", label: "Contact" },
 ];
 

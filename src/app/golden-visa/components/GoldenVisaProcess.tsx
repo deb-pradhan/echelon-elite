@@ -156,7 +156,7 @@ export function GoldenVisaProcess() {
                   {/* Content */}
                   <div className="lg:col-span-5">
                     <div className="flex items-center gap-5 mb-5">
-                      <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-paper tracking-[-0.01em]">
+                      <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-paper tracking-[-0.01em]" style={{ color: "var(--color-paper)" }}>
                         {step.title}
                       </h3>
                       <span className="text-[10px] uppercase tracking-[0.15em] text-gilt bg-gilt/10 px-4 py-2">

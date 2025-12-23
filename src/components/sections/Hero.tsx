@@ -58,10 +58,11 @@ export function Hero() {
 
             {/* Main Heading - Display XL per design system */}
             <h1
-              className={`font-[family-name:var(--font-playfair)] text-5xl md:text-7xl lg:text-[96px] text-white leading-[1] tracking-[-0.03em] mb-10 transition-all duration-[1000ms] ${
+              className={`font-[family-name:var(--font-playfair)] text-5xl md:text-7xl lg:text-[96px] leading-[1] tracking-[-0.03em] mb-10 transition-all duration-[1000ms] ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               style={{ 
+                color: "var(--color-white)",
                 transitionDelay: "150ms",
                 transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
               }}

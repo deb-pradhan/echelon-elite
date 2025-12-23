@@ -41,6 +41,7 @@
 @theme inline {
   --color-void: #0F1115;
   --color-paper: #FFFFFF;
+  --color-white: #FFFFFF;
   --color-gilt: #C5A065;
   --color-stone: #8E8D8A;
   --color-moss: #2C3E33;
@@ -72,7 +73,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-playfair), Georgia, serif;
   font-weight: 400;
-  color: var(--color-primary-void);
   letter-spacing: -0.02em;
 }
 
@@ -444,6 +444,92 @@ h1, h2, h3, h4, h5, h6 {
 
 .input-line::placeholder {
   color: var(--color-secondary-stone);
+}
+
+/* Custom Select - "Architectural Line" style */
+.select-container {
+  position: relative;
+  width: 100%;
+}
+
+.select-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  font-family: var(--font-lato), system-ui, sans-serif;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  outline: none;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--duration-micro) var(--ease-luxury);
+}
+
+.select-trigger:hover,
+.select-trigger.is-open {
+  border-bottom-width: 2px;
+  border-bottom-color: var(--color-accent-gilt);
+}
+
+.select-arrow {
+  color: var(--color-secondary-stone);
+  transition: transform var(--duration-micro) var(--ease-luxury);
+  flex-shrink: 0;
+}
+
+.select-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--color-primary-paper);
+  border: 1px solid var(--color-border);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 50;
+  transition: all var(--duration-micro) var(--ease-luxury);
+}
+
+.select-dropdown.is-open {
+  max-height: 280px;
+  overflow-y: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+.select-option {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: var(--font-lato), system-ui, sans-serif;
+  font-size: 15px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-primary-void);
+  transition: all var(--duration-micro) var(--ease-luxury);
+}
+
+.select-option:hover {
+  background: rgba(197, 160, 101, 0.1);
+  color: var(--color-accent-gilt);
+}
+
+.select-option.is-selected {
+  color: var(--color-accent-gilt);
+  font-weight: 500;
+}
+
+.select-option.is-selected::before {
+  content: "✓";
+  margin-right: 8px;
+  font-size: 12px;
 }
 
 /* Floating label */

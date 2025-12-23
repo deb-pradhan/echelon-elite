@@ -1,6 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { Select } from "@/components/ui/Select";
+
+const interestOptions = [
+  { value: "apartments", label: "Luxury Apartments" },
+  { value: "villas", label: "Premium Villas" },
+  { value: "branded", label: "Branded Residences" },
+  { value: "offplan", label: "Off-Plan Investments" },
+  { value: "golden-visa", label: "Golden Visa Properties" },
+  { value: "other", label: "Other / Not Sure" },
+];
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -8,7 +18,6 @@ export default function ContactPage() {
     email: "",
     phone: "",
     country: "",
-    budget: "",
     interest: "",
     message: "",
   });
@@ -116,46 +125,19 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                {/* Budget */}
-                <div>
-                  <label className="text-label text-void/50 block mb-4">
-                    Investment Budget
-                  </label>
-                  <select
-                    value={formData.budget}
-                    onChange={(e) =>
-                      setFormData({ ...formData, budget: e.target.value })
-                    }
-                    className="input-line cursor-pointer"
-                  >
-                    <option value="">Select Budget Range</option>
-                    <option value="2-5">AED 2 - 5 Million</option>
-                    <option value="5-10">AED 5 - 10 Million</option>
-                    <option value="10-20">AED 10 - 20 Million</option>
-                    <option value="20+">AED 20+ Million</option>
-                  </select>
-                </div>
-
                 {/* Interest */}
                 <div>
                   <label className="text-label text-void/50 block mb-4">
                     I&apos;m interested in
                   </label>
-                  <select
+                  <Select
                     value={formData.interest}
-                    onChange={(e) =>
-                      setFormData({ ...formData, interest: e.target.value })
+                    onChange={(value) =>
+                      setFormData({ ...formData, interest: value })
                     }
-                    className="input-line cursor-pointer"
-                  >
-                    <option value="">Select Your Interest</option>
-                    <option value="apartments">Luxury Apartments</option>
-                    <option value="villas">Premium Villas</option>
-                    <option value="branded">Branded Residences</option>
-                    <option value="offplan">Off-Plan Investments</option>
-                    <option value="golden-visa">Golden Visa Properties</option>
-                    <option value="other">Other / Not Sure</option>
-                  </select>
+                    options={interestOptions}
+                    placeholder="Select Your Interest"
+                  />
                 </div>
 
                 {/* Message */}

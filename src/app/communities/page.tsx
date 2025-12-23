@@ -102,7 +102,7 @@ export default function CommunitiesPage() {
             <span className="text-label text-gilt block mb-8">
               Prime Locations
             </span>
-            <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl text-paper leading-tight tracking-[-0.02em] mb-8">
+            <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl !text-white leading-tight tracking-[-0.02em] mb-8">
               Dubai Communities
             </h1>
             <p className="text-xl text-paper/50">

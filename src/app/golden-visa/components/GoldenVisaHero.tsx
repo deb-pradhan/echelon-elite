@@ -62,6 +62,7 @@ export function GoldenVisaHero() {
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
             style={{ 
+              color: "var(--color-paper)",
               textShadow: "0 4px 20px rgba(0,0,0,0.4)",
               transitionDelay: "200ms",
               transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
