@@ -124,6 +124,7 @@ export default function DevelopersPage() {
                     src={developer.image}
                     alt={developer.name}
                     fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover"
                   />
                   {/* Logo Overlay */}

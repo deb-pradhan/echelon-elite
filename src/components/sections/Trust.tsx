@@ -1,7 +1,3 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-
 const trustElements = [
   {
     logo: "RERA",
@@ -28,34 +24,12 @@ const awards = [
 ];
 
 export function Trust() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} className="py-32 bg-paper">
+    <section className="py-32 bg-paper">
       <div className="container-luxury">
         {/* Trust Badges */}
         <div
-          className={`flex flex-wrap justify-center items-center gap-16 md:gap-24 mb-20 transition-all duration-[800ms] ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className="flex flex-wrap justify-center items-center gap-16 md:gap-24 mb-20 opacity-100 translate-y-0"
           style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
         >
           {trustElements.map((element) => (
@@ -83,9 +57,7 @@ export function Trust() {
 
         {/* Awards */}
         <div
-          className={`flex flex-wrap justify-center items-center gap-10 md:gap-20 transition-all duration-[800ms] ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-100 translate-y-0"
           style={{ 
             transitionDelay: "200ms",
             transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
@@ -114,9 +86,7 @@ export function Trust() {
 
         {/* Group Company Note */}
         <p
-          className={`text-center text-sm text-void/40 mt-20 transition-all duration-[800ms] ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className="text-center text-sm text-void/40 mt-20 opacity-100 translate-y-0"
           style={{ 
             transitionDelay: "300ms",
             transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"

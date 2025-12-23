@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PropertyCard } from "@/components/property/PropertyCard";

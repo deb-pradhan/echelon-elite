@@ -42,12 +42,13 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative min-h-[70vh] flex items-center pt-40 pb-24 overflow-hidden">
         <div className="absolute inset-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=2796&auto=format&fit=crop')",
-            }}
+          <Image
+            src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=2400&auto=format&fit=crop"
+            alt="Dubai skyline"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-void/80" />
         </div>
@@ -120,6 +121,7 @@ export default function AboutPage() {
                 src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop"
                 alt="Luxury Dubai Property"
                 fill
+                sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"
               />
             </div>

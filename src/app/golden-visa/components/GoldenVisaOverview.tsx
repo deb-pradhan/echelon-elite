@@ -1,7 +1,4 @@
-"use client";
-
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { useEffect, useRef, useState } from "react";
 
 const requirements = [
   {
@@ -56,28 +53,8 @@ const benefits = [
 ];
 
 export function GoldenVisaOverview() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} className="section-padding bg-paper">
+    <section className="section-padding bg-paper">
       <div className="container-luxury">
         {/* Intro */}
         <div className="max-w-3xl mb-24">
@@ -93,11 +70,7 @@ export function GoldenVisaOverview() {
           {requirements.map((req, index) => (
             <div
               key={req.title}
-              className={`bg-paper p-10 border border-void/10 transition-all duration-[800ms] ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
+              className="bg-paper p-10 border border-void/10 opacity-100 translate-y-0"
               style={{ 
                 transitionDelay: `${index * 100}ms`,
                 transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
@@ -127,11 +100,7 @@ export function GoldenVisaOverview() {
               {benefits.map((benefit, index) => (
                 <li
                   key={index}
-                  className={`flex items-start gap-5 transition-all duration-[600ms] ${
-                    isVisible
-                      ? "opacity-100 translate-x-0"
-                      : "opacity-0 -translate-x-4"
-                  }`}
+                  className="flex items-start gap-5 opacity-100 translate-x-0"
                   style={{ 
                     transitionDelay: `${400 + index * 100}ms`,
                     transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"

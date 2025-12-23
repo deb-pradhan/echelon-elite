@@ -1,39 +1,17 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 export function GoldenVisaCTA() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} className="relative py-40 overflow-hidden">
+    <section className="relative py-40 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=2796&auto=format&fit=crop')",
-          }}
+        <Image
+          src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=2400&auto=format&fit=crop"
+          alt="Dubai skyline at night"
+          fill
+          sizes="100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-void/85" />
       </div>
@@ -42,9 +20,7 @@ export function GoldenVisaCTA() {
         <div className="max-w-4xl mx-auto text-center">
           {/* Golden Visa Badge */}
           <div
-            className={`inline-flex items-center gap-4 mb-10 transition-all duration-[800ms] ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className="inline-flex items-center gap-4 mb-10 opacity-100 translate-y-0"
             style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
           >
             <div className="w-16 h-[1px] bg-gilt" />
@@ -54,9 +30,7 @@ export function GoldenVisaCTA() {
 
           {/* Heading */}
           <h2
-            className={`font-[family-name:var(--font-playfair)] text-4xl md:text-5xl lg:text-6xl text-paper mb-8 tracking-[-0.02em] transition-all duration-[800ms] ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl lg:text-6xl text-paper mb-8 tracking-[-0.02em] opacity-100 translate-y-0"
             style={{ 
               textShadow: "0 4px 20px rgba(0,0,0,0.3)",
               transitionDelay: "100ms",
@@ -70,9 +44,7 @@ export function GoldenVisaCTA() {
 
           {/* Description */}
           <p
-            className={`text-lg text-paper/70 max-w-2xl mx-auto mb-16 leading-relaxed transition-all duration-[800ms] ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className="text-lg text-paper/70 max-w-2xl mx-auto mb-16 leading-relaxed opacity-100 translate-y-0"
             style={{ 
               textShadow: "0 2px 8px rgba(0,0,0,0.2)",
               transitionDelay: "200ms",
@@ -85,9 +57,7 @@ export function GoldenVisaCTA() {
 
           {/* Benefits */}
           <div
-            className={`grid grid-cols-2 md:grid-cols-4 gap-10 mb-16 transition-all duration-[800ms] ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16 opacity-100 translate-y-0"
             style={{ 
               transitionDelay: "300ms",
               transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
@@ -112,9 +82,7 @@ export function GoldenVisaCTA() {
 
           {/* CTA */}
           <div
-            className={`flex flex-col sm:flex-row items-center justify-center gap-6 transition-all duration-[800ms] ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className="flex flex-col sm:flex-row items-center justify-center gap-6 opacity-100 translate-y-0"
             style={{ 
               transitionDelay: "400ms",
               transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"

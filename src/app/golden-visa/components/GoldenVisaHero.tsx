@@ -1,25 +1,18 @@
-"use client";
-
 import { Button } from "@/components/ui/Button";
-import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export function GoldenVisaHero() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
   return (
     <section className="relative min-h-[80vh] flex items-center overflow-hidden pt-40 pb-24">
       {/* Background */}
       <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2940&auto=format&fit=crop')",
-          }}
+        <Image
+          src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2400&auto=format&fit=crop"
+          alt="Dubai waterfront skyline"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-void/80" />
       </div>
@@ -28,9 +21,7 @@ export function GoldenVisaHero() {
         <div className="max-w-4xl">
           {/* Breadcrumb */}
           <div
-            className={`flex items-center gap-2 mb-10 text-paper/50 text-sm transition-all duration-[800ms] ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className="flex items-center gap-2 mb-10 text-paper/50 text-sm opacity-100 translate-y-0"
             style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
           >
             <a href="/" className="hover:text-paper transition-colors duration-[400ms]"
@@ -44,9 +35,7 @@ export function GoldenVisaHero() {
 
           {/* Label */}
           <span
-            className={`text-label text-gilt block mb-8 transition-all duration-[800ms] ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className="text-label text-gilt block mb-8 opacity-100 translate-y-0"
             style={{ 
               textShadow: "0 2px 8px rgba(0,0,0,0.3)",
               transitionDelay: "100ms",
@@ -58,9 +47,7 @@ export function GoldenVisaHero() {
 
           {/* Heading */}
           <h1
-            className={`font-[family-name:var(--font-playfair)] text-5xl md:text-6xl lg:text-7xl text-paper leading-tight tracking-[-0.02em] mb-10 transition-all duration-[800ms] ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl lg:text-7xl text-paper leading-tight tracking-[-0.02em] mb-10 opacity-100 translate-y-0"
             style={{ 
               textShadow: "0 4px 20px rgba(0,0,0,0.4)",
               transitionDelay: "200ms",
@@ -74,9 +61,7 @@ export function GoldenVisaHero() {
 
           {/* Description */}
           <p
-            className={`text-xl text-paper/70 max-w-2xl mb-16 leading-relaxed transition-all duration-[800ms] ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className="text-xl text-paper/70 max-w-2xl mb-16 leading-relaxed opacity-100 translate-y-0"
             style={{ 
               textShadow: "0 2px 8px rgba(0,0,0,0.3)",
               transitionDelay: "300ms",
@@ -90,9 +75,7 @@ export function GoldenVisaHero() {
 
           {/* Key Benefits */}
           <div
-            className={`grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 transition-all duration-[800ms] ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 opacity-100 translate-y-0"
             style={{ 
               transitionDelay: "400ms",
               transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
@@ -120,9 +103,7 @@ export function GoldenVisaHero() {
 
           {/* CTAs */}
           <div
-            className={`flex flex-col sm:flex-row gap-6 transition-all duration-[800ms] ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className="flex flex-col sm:flex-row gap-6 opacity-100 translate-y-0"
             style={{ 
               transitionDelay: "500ms",
               transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"

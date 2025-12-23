@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const faqs = [
@@ -48,28 +48,9 @@ const faqs = [
 
 export function GoldenVisaFAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
-    <section ref={sectionRef} className="section-padding bg-paper">
+    <section className="section-padding bg-paper">
       <div className="container-luxury">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
           {/* Left Column */}
@@ -115,11 +96,7 @@ export function GoldenVisaFAQ() {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className={`border-b border-void/10 transition-all duration-[600ms] ${
-                    isVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-4"
-                  }`}
+                  className="border-b border-void/10 opacity-100 translate-y-0"
                   style={{ 
                     transitionDelay: `${index * 50}ms`,
                     transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"

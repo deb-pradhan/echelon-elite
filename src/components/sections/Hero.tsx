@@ -1,27 +1,18 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export function Hero() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
   return (
     <section className="relative h-screen min-h-[900px] flex items-center overflow-hidden">
       {/* Background Image with Parallax Effect */}
       <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[1.5s]"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2940&auto=format&fit=crop')",
-            transform: isLoaded ? "scale(1)" : "scale(1.1)",
-            transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)",
-          }}
+        <Image
+          src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2400&auto=format&fit=crop"
+          alt="Luxury Dubai real estate skyline"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
         {/* Sophisticated overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-void/80 via-void/50 to-transparent" />
@@ -30,9 +21,7 @@ export function Hero() {
 
       {/* Decorative vertical line */}
       <div 
-        className={`absolute left-[80px] top-1/2 -translate-y-1/2 w-px h-[200px] bg-gradient-to-b from-transparent via-gilt to-transparent transition-all duration-[1.2s] hidden lg:block ${
-          isLoaded ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0"
-        }`}
+        className="absolute left-[80px] top-1/2 -translate-y-1/2 w-px h-[200px] bg-gradient-to-b from-transparent via-gilt to-transparent hidden lg:block opacity-100 scale-y-100"
         style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
       />
 
@@ -43,9 +32,7 @@ export function Hero() {
           <div className="lg:col-span-7 lg:pl-12">
             {/* Eyebrow / Label */}
             <div
-              className={`flex items-center gap-4 mb-10 transition-all duration-[1000ms] ${
-                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className="flex items-center gap-4 mb-10 opacity-100 translate-y-0"
               style={{ 
                 transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
               }}
@@ -58,9 +45,7 @@ export function Hero() {
 
             {/* Main Heading - Display XL per design system */}
             <h1
-              className={`font-[family-name:var(--font-playfair)] text-5xl md:text-7xl lg:text-[96px] text-white leading-[1] tracking-[-0.03em] mb-10 transition-all duration-[1000ms] ${
-                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl lg:text-[96px] text-white leading-[1] tracking-[-0.03em] mb-10 opacity-100 translate-y-0"
               style={{ 
                 transitionDelay: "150ms",
                 transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
@@ -75,9 +60,7 @@ export function Hero() {
 
             {/* Subtitle - Body Lead style */}
             <p
-              className={`text-xl text-paper/70 max-w-lg leading-relaxed mb-14 transition-all duration-[1000ms] ${
-                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className="text-xl text-paper/70 max-w-lg leading-relaxed mb-14 opacity-100 translate-y-0"
               style={{ 
                 transitionDelay: "300ms",
                 transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)",
@@ -90,9 +73,7 @@ export function Hero() {
 
             {/* CTAs */}
             <div
-              className={`flex flex-wrap items-center gap-6 transition-all duration-[1000ms] ${
-                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className="flex flex-wrap items-center gap-6 opacity-100 translate-y-0"
               style={{ 
                 transitionDelay: "450ms",
                 transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
@@ -110,9 +91,7 @@ export function Hero() {
           {/* Right Stats Panel - Editorial touch */}
           <div className="lg:col-span-5 hidden lg:block">
             <div 
-              className={`ml-auto max-w-xs space-y-8 transition-all duration-[1000ms] ${
-                isLoaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
-              }`}
+              className="ml-auto max-w-xs space-y-8 opacity-100 translate-x-0"
               style={{ 
                 transitionDelay: "600ms",
                 transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
@@ -152,9 +131,7 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <div 
-        className={`absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 transition-all duration-[1000ms] ${
-          isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-100 translate-y-0"
         style={{ 
           transitionDelay: "800ms",
           transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"

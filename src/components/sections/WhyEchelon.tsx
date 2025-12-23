@@ -1,7 +1,4 @@
-"use client";
-
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { useEffect, useRef, useState } from "react";
 
 const features = [
   {
@@ -25,28 +22,8 @@ const features = [
 ];
 
 export function WhyEchelon() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} className="section-padding bg-paper">
+    <section className="section-padding bg-paper">
       <div className="container-luxury">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
           {/* Left Column - Heading */}
@@ -85,11 +62,7 @@ export function WhyEchelon() {
               {features.map((feature, index) => (
                 <div
                   key={feature.number}
-                  className={`border-t border-void/10 py-12 transition-all duration-[800ms] ${
-                    isVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-8"
-                  }`}
+                  className="border-t border-void/10 py-12 opacity-100 translate-y-0"
                   style={{ 
                     transitionDelay: `${index * 150}ms`,
                     transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
