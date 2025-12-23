@@ -96,16 +96,16 @@ export default function CommunitiesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-40 pb-16 bg-midnight">
+      <section className="pt-48 pb-20 bg-void">
         <div className="container-luxury">
           <div className="max-w-3xl">
-            <span className="text-label text-gold block mb-6">
+            <span className="text-label text-gilt block mb-8">
               Prime Locations
             </span>
-            <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl text-alabaster leading-tight mb-6">
+            <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl text-paper leading-tight tracking-[-0.02em] mb-8">
               Dubai Communities
             </h1>
-            <p className="text-xl text-alabaster/60">
+            <p className="text-xl text-paper/50">
               Explore the most prestigious neighborhoods in Dubai. Each
               community offers unique investment opportunities and lifestyle
               benefits.
@@ -115,13 +115,13 @@ export default function CommunitiesPage() {
       </section>
 
       {/* Communities List */}
-      <section className="section-padding bg-alabaster">
+      <section className="section-padding bg-paper">
         <div className="container-luxury">
-          <div className="space-y-24">
+          <div className="space-y-32">
             {communities.map((community, index) => (
               <div
                 key={community.slug}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${
                   index % 2 === 1 ? "lg:flex-row-reverse" : ""
                 }`}
               >
@@ -138,29 +138,29 @@ export default function CommunitiesPage() {
                     className="object-cover"
                   />
                   {/* Overlay Stats */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-midnight/90 to-transparent">
-                    <div className="flex gap-6">
+                  <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-void/90 to-transparent">
+                    <div className="flex gap-8">
                       <div>
-                        <span className="text-gold text-lg font-medium">
+                        <span className="text-gilt text-lg font-normal">
                           {community.avgRoi}
                         </span>
-                        <span className="text-alabaster/50 text-xs block">
+                        <span className="text-paper/50 text-[11px] uppercase tracking-[0.1em] block mt-1">
                           Avg ROI
                         </span>
                       </div>
                       <div>
-                        <span className="text-alabaster text-lg font-medium">
+                        <span className="text-paper text-lg font-normal">
                           {community.avgPrice}
                         </span>
-                        <span className="text-alabaster/50 text-xs block">
+                        <span className="text-paper/50 text-[11px] uppercase tracking-[0.1em] block mt-1">
                           Avg Price
                         </span>
                       </div>
                       <div>
-                        <span className="text-alabaster text-lg font-medium">
+                        <span className="text-paper text-lg font-normal">
                           {community.properties}
                         </span>
-                        <span className="text-alabaster/50 text-xs block">
+                        <span className="text-paper/50 text-[11px] uppercase tracking-[0.1em] block mt-1">
                           Properties
                         </span>
                       </div>
@@ -170,22 +170,22 @@ export default function CommunitiesPage() {
 
                 {/* Content */}
                 <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                  <span className="text-label text-gold block mb-4">
+                  <span className="text-label text-gilt block mb-5">
                     {community.tagline}
                   </span>
-                  <h2 className="font-[family-name:var(--font-playfair)] text-4xl text-midnight mb-4">
+                  <h2 className="font-[family-name:var(--font-playfair)] text-4xl text-void mb-5 tracking-[-0.02em]">
                     {community.name}
                   </h2>
-                  <p className="text-charcoal/60 leading-relaxed mb-6">
+                  <p className="text-stone leading-relaxed mb-8">
                     {community.description}
                   </p>
 
                   {/* Highlights */}
-                  <div className="flex flex-wrap gap-3 mb-8">
+                  <div className="flex flex-wrap gap-3 mb-10">
                     {community.highlights.map((highlight) => (
                       <span
                         key={highlight}
-                        className="px-4 py-2 bg-marble/50 text-sm text-charcoal/70"
+                        className="px-5 py-3 bg-void/5 text-sm text-void/70"
                       >
                         {highlight}
                       </span>
@@ -194,7 +194,7 @@ export default function CommunitiesPage() {
 
                   <Link
                     href={`/communities/${community.slug}`}
-                    className="btn-ghost btn-ghost-dark"
+                    className="btn-secondary"
                   >
                     View Properties in {community.name}
                   </Link>
@@ -206,7 +206,7 @@ export default function CommunitiesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-midnight">
+      <section className="py-32 bg-void">
         <div className="container-luxury">
           <div className="max-w-3xl mx-auto text-center">
             <SectionHeading
@@ -216,8 +216,8 @@ export default function CommunitiesPage() {
               align="center"
               theme="dark"
             />
-            <div className="mt-8">
-              <Link href="/contact" className="btn-ghost btn-ghost-light">
+            <div className="mt-10">
+              <Link href="/contact" className="btn-ghost">
                 Get Expert Advice
               </Link>
             </div>
@@ -227,4 +227,3 @@ export default function CommunitiesPage() {
     </>
   );
 }
-

@@ -46,9 +46,9 @@ export function WhyEchelon() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section-padding bg-alabaster">
+    <section ref={sectionRef} className="section-padding bg-paper">
       <div className="container-luxury">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
           {/* Left Column - Heading */}
           <div className="lg:col-span-5">
             <SectionHeading
@@ -56,22 +56,22 @@ export function WhyEchelon() {
               title="The Echelon Distinction"
               subtitle="We don't simply sell properties. We craft investment strategies for those who demand excellence."
             />
-            <div className="mt-12">
-              <div className="flex items-center gap-6 text-charcoal/60">
+            <div className="mt-16">
+              <div className="flex items-center gap-8 text-stone">
                 <div className="text-center">
-                  <span className="font-[family-name:var(--font-playfair)] text-4xl text-midnight block">
+                  <span className="font-[family-name:var(--font-playfair)] text-4xl text-void block tracking-[-0.02em]">
                     500+
                   </span>
-                  <span className="text-xs uppercase tracking-widest">
+                  <span className="text-[11px] uppercase tracking-[0.1em] mt-2 block">
                     Properties Sold
                   </span>
                 </div>
-                <div className="w-[1px] h-12 bg-marble" />
+                <div className="w-[1px] h-14 bg-void/10" />
                 <div className="text-center">
-                  <span className="font-[family-name:var(--font-playfair)] text-4xl text-midnight block">
+                  <span className="font-[family-name:var(--font-playfair)] text-4xl text-void block tracking-[-0.02em]">
                     AED 2B+
                   </span>
-                  <span className="text-xs uppercase tracking-widest">
+                  <span className="text-[11px] uppercase tracking-[0.1em] mt-2 block">
                     Transaction Value
                   </span>
                 </div>
@@ -85,22 +85,25 @@ export function WhyEchelon() {
               {features.map((feature, index) => (
                 <div
                   key={feature.number}
-                  className={`border-t border-marble py-10 transition-all duration-700 ${
+                  className={`border-t border-void/10 py-12 transition-all duration-[800ms] ${
                     isVisible
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-8"
                   }`}
-                  style={{ transitionDelay: `${index * 150}ms` }}
+                  style={{ 
+                    transitionDelay: `${index * 150}ms`,
+                    transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
+                  }}
                 >
-                  <div className="flex gap-8">
-                    <span className="text-gold text-sm font-medium">
+                  <div className="flex gap-10">
+                    <span className="text-gilt text-[12px] tracking-[0.1em] font-normal">
                       {feature.number}
                     </span>
                     <div>
-                      <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-midnight mb-3">
+                      <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-void mb-4 tracking-[-0.01em]">
                         {feature.title}
                       </h3>
-                      <p className="text-charcoal/70 leading-relaxed">
+                      <p className="text-stone leading-relaxed">
                         {feature.description}
                       </p>
                     </div>
@@ -114,4 +117,3 @@ export function WhyEchelon() {
     </section>
   );
 }
-

@@ -109,11 +109,11 @@ export function GoldenVisaProcess() {
     <section
       id="process"
       ref={sectionRef}
-      className="section-padding bg-midnight"
+      className="section-padding bg-void"
     >
       <div className="container-luxury">
         {/* Header */}
-        <div className="max-w-3xl mb-20">
+        <div className="max-w-3xl mb-24">
           <SectionHeading
             label="Step by Step"
             title="The Golden Visa Process"
@@ -125,64 +125,67 @@ export function GoldenVisaProcess() {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-alabaster/10 hidden lg:block" />
+          <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-paper/10 hidden lg:block" />
 
           {/* Steps */}
           <div className="space-y-0">
             {steps.map((step, index) => (
               <div
                 key={step.step}
-                className={`relative lg:pl-24 py-12 border-b border-alabaster/10 last:border-b-0 transition-all duration-700 ${
+                className={`relative lg:pl-28 py-14 border-b border-paper/10 last:border-b-0 transition-all duration-[800ms] ${
                   isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-8"
                 }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
+                style={{ 
+                  transitionDelay: `${index * 100}ms`,
+                  transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
+                }}
               >
                 {/* Step Number */}
-                <div className="hidden lg:flex absolute left-0 top-12 w-16 h-16 items-center justify-center bg-midnight border border-gold text-gold font-[family-name:var(--font-playfair)] text-xl">
+                <div className="hidden lg:flex absolute left-0 top-14 w-16 h-16 items-center justify-center bg-void border border-gilt text-gilt font-[family-name:var(--font-playfair)] text-xl">
                   {step.step}
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
                   {/* Mobile Step Number */}
-                  <div className="lg:hidden text-gold text-sm font-medium">
+                  <div className="lg:hidden text-gilt text-[12px] tracking-[0.1em] uppercase">
                     Step {step.step}
                   </div>
 
                   {/* Content */}
                   <div className="lg:col-span-5">
-                    <div className="flex items-center gap-4 mb-4">
-                      <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-alabaster">
+                    <div className="flex items-center gap-5 mb-5">
+                      <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-paper tracking-[-0.01em]">
                         {step.title}
                       </h3>
-                      <span className="text-[10px] uppercase tracking-widest text-gold bg-gold/10 px-3 py-1">
+                      <span className="text-[10px] uppercase tracking-[0.15em] text-gilt bg-gilt/10 px-4 py-2">
                         {step.duration}
                       </span>
                     </div>
-                    <p className="text-alabaster/60 leading-relaxed">
+                    <p className="text-paper/50 leading-relaxed">
                       {step.description}
                     </p>
                   </div>
 
                   {/* Details */}
                   <div className="lg:col-span-7">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-5">
                       {step.details.map((detail, i) => (
                         <div
                           key={i}
-                          className="flex items-center gap-3 text-sm text-alabaster/50"
+                          className="flex items-center gap-4 text-sm text-paper/40"
                         >
                           <svg
-                            className="w-4 h-4 text-gold flex-shrink-0"
+                            className="w-4 h-4 text-gilt flex-shrink-0"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
+                            strokeWidth="1"
                           >
                             <path
                               strokeLinecap="round"
                               strokeLinejoin="round"
-                              strokeWidth={2}
                               d="M5 13l4 4L19 7"
                             />
                           </svg>
@@ -198,14 +201,14 @@ export function GoldenVisaProcess() {
         </div>
 
         {/* Total Timeline */}
-        <div className="mt-16 p-8 border border-alabaster/10 text-center">
-          <span className="text-label text-gold block mb-4">
+        <div className="mt-20 p-10 border border-paper/10 text-center">
+          <span className="text-label text-gilt block mb-6">
             Total Timeline
           </span>
-          <span className="font-[family-name:var(--font-playfair)] text-4xl text-alabaster">
+          <span className="font-[family-name:var(--font-playfair)] text-4xl text-paper tracking-[-0.02em]">
             6-10 Weeks
           </span>
-          <p className="text-alabaster/50 mt-4 max-w-md mx-auto">
+          <p className="text-paper/40 mt-5 max-w-md mx-auto">
             From property selection to Golden Visa issuance. Fast-track
             processing available for eligible applicants.
           </p>
@@ -214,4 +217,3 @@ export function GoldenVisaProcess() {
     </section>
   );
 }
-

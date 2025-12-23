@@ -133,16 +133,16 @@ export default function PropertiesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-40 pb-16 bg-midnight">
+      <section className="pt-48 pb-20 bg-void">
         <div className="container-luxury">
           <div className="max-w-3xl">
-            <span className="text-label text-gold block mb-6">
+            <span className="text-label text-gilt block mb-8">
               Premium Collection
             </span>
-            <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl text-alabaster leading-tight mb-6">
+            <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl text-paper leading-tight tracking-[-0.02em] mb-8">
               Luxury Properties
             </h1>
-            <p className="text-xl text-alabaster/60">
+            <p className="text-xl text-paper/50">
               Discover Dubai&apos;s most exclusive properties, handpicked for
               discerning investors. All listings are Golden Visa eligible.
             </p>
@@ -151,20 +151,21 @@ export default function PropertiesPage() {
       </section>
 
       {/* Filters */}
-      <section className="py-8 bg-alabaster border-b border-marble">
+      <section className="py-10 bg-paper border-b border-void/10">
         <div className="container-luxury">
           <div className="flex flex-wrap items-center gap-4">
             {categories.map((category) => (
               <button
                 key={category.value}
-                className={`px-6 py-3 text-sm transition-colors ${
+                className={`px-8 py-4 text-[12px] tracking-[0.1em] uppercase transition-all duration-[400ms] ${
                   category.value === "all"
-                    ? "bg-midnight text-alabaster"
-                    : "bg-transparent text-charcoal/60 hover:text-midnight border border-marble"
+                    ? "bg-void text-paper"
+                    : "bg-transparent text-void/50 hover:text-void border border-void/10"
                 }`}
+                style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
               >
                 {category.label}
-                <span className="ml-2 text-xs text-charcoal/40">
+                <span className="ml-2 opacity-50">
                   ({category.count})
                 </span>
               </button>
@@ -174,17 +175,17 @@ export default function PropertiesPage() {
       </section>
 
       {/* Properties Grid */}
-      <section className="section-padding bg-alabaster">
+      <section className="section-padding bg-paper">
         <div className="container-luxury">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
             {properties.map((property) => (
               <PropertyCard key={property.id} {...property} />
             ))}
           </div>
 
           {/* Load More */}
-          <div className="text-center mt-16">
-            <button className="btn-ghost btn-ghost-dark">
+          <div className="text-center mt-20">
+            <button className="btn-secondary">
               Load More Properties
             </button>
           </div>
@@ -192,46 +193,55 @@ export default function PropertiesPage() {
       </section>
 
       {/* Golden Visa Note */}
-      <section className="py-16 bg-midnight">
+      <section className="py-20 bg-void">
         <div className="container-luxury">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 border border-gold flex items-center justify-center">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+            <div className="flex items-center gap-6">
+              <div className="w-14 h-14 border border-gilt flex items-center justify-center">
                 <svg
-                  className="w-6 h-6 text-gold"
+                  className="w-6 h-6 text-gilt"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  strokeWidth="1"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={1}
                     d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
                   />
                 </svg>
               </div>
               <div>
-                <span className="text-alabaster font-medium block">
+                <span className="text-paper font-normal block">
                   All Properties Golden Visa Eligible
                 </span>
-                <span className="text-alabaster/50 text-sm">
+                <span className="text-paper/40 text-sm">
                   Invest AED 2M+ and qualify for 10-year UAE residency
                 </span>
               </div>
             </div>
             <a
               href="/golden-visa"
-              className="link-gold text-sm"
+              className="link-arrow text-gilt text-sm"
             >
-              Learn About Golden Visa →
+              Learn About Golden Visa
+              <svg
+                className="arrow w-4 h-4"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+              >
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
             </a>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-alabaster">
+      <section className="section-padding bg-paper">
         <div className="container-luxury">
           <div className="max-w-3xl mx-auto text-center">
             <SectionHeading
@@ -240,8 +250,8 @@ export default function PropertiesPage() {
               subtitle="Our advisors can curate a selection of properties based on your specific investment criteria and preferences."
               align="center"
             />
-            <div className="mt-8">
-              <a href="/contact" className="btn-ghost btn-ghost-dark">
+            <div className="mt-10">
+              <a href="/contact" className="btn-secondary">
                 Speak to an Advisor
               </a>
             </div>
@@ -251,4 +261,3 @@ export default function PropertiesPage() {
     </>
   );
 }
-

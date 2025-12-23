@@ -14,24 +14,23 @@ export function SectionHeading({
   theme = "light",
 }: SectionHeadingProps) {
   const alignClasses = align === "center" ? "text-center" : "text-left";
-  const labelColor = theme === "dark" ? "text-gold" : "text-gold";
-  const titleColor = theme === "dark" ? "text-alabaster" : "text-midnight";
-  const subtitleColor =
-    theme === "dark" ? "text-alabaster/60" : "text-charcoal/70";
+  const labelColor = theme === "dark" ? "text-paper/50" : "text-stone";
+  const titleColor = theme === "dark" ? "text-paper" : "text-void";
+  const subtitleColor = theme === "dark" ? "text-paper/60" : "text-stone";
 
   return (
-    <div className={`${alignClasses} mb-16`}>
+    <div className={`${alignClasses} mb-20`}>
       {label && (
-        <span className={`text-label ${labelColor} block mb-4`}>{label}</span>
+        <span className={`text-label ${labelColor} block mb-6`}>{label}</span>
       )}
       <h2
-        className={`font-[family-name:var(--font-playfair)] text-4xl md:text-5xl lg:text-6xl ${titleColor}`}
+        className={`font-[family-name:var(--font-playfair)] text-4xl md:text-5xl lg:text-6xl ${titleColor} tracking-[-0.02em]`}
       >
         {title}
       </h2>
       {subtitle && (
         <p
-          className={`mt-6 text-lg ${subtitleColor} max-w-2xl ${
+          className={`mt-8 text-lg ${subtitleColor} max-w-2xl leading-relaxed ${
             align === "center" ? "mx-auto" : ""
           }`}
         >
@@ -41,4 +40,3 @@ export function SectionHeading({
     </div>
   );
 }
-

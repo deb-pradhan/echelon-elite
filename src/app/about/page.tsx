@@ -40,7 +40,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[70vh] flex items-center pt-32 pb-20 overflow-hidden">
+      <section className="relative min-h-[70vh] flex items-center pt-40 pb-24 overflow-hidden">
         <div className="absolute inset-0">
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -49,18 +49,29 @@ export default function AboutPage() {
                 "url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=2796&auto=format&fit=crop')",
             }}
           />
-          <div className="absolute inset-0 bg-midnight/80" />
+          <div className="absolute inset-0 bg-void/80" />
         </div>
 
         <div className="relative z-10 container-luxury">
           <div className="max-w-3xl">
-            <span className="text-label text-gold block mb-6">About Us</span>
-            <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl lg:text-7xl text-alabaster leading-tight mb-8">
-              The <em className="text-gold">Echelon</em>
+            <span
+              className="text-label text-gilt block mb-8"
+              style={{ textShadow: "0 2px 8px rgba(0,0,0,0.3)" }}
+            >
+              About Us
+            </span>
+            <h1
+              className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl lg:text-7xl text-paper leading-tight tracking-[-0.02em] mb-10"
+              style={{ textShadow: "0 4px 20px rgba(0,0,0,0.4)" }}
+            >
+              The <em className="text-gilt">Echelon</em>
               <br />
               Standard
             </h1>
-            <p className="text-xl text-alabaster/70 leading-relaxed">
+            <p
+              className="text-xl text-paper/70 leading-relaxed"
+              style={{ textShadow: "0 2px 8px rgba(0,0,0,0.3)" }}
+            >
               Dubai&apos;s premier luxury real estate brokerage, dedicated to
               connecting discerning investors with exceptional properties and
               seamless Golden Visa solutions.
@@ -70,15 +81,15 @@ export default function AboutPage() {
       </section>
 
       {/* Who We Are */}
-      <section className="section-padding bg-alabaster">
+      <section className="section-padding bg-paper">
         <div className="container-luxury">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
               <SectionHeading
                 label="Who We Are"
                 title="Ultra-Premium Real Estate for Global Investors"
               />
-              <div className="space-y-6 text-charcoal/70 leading-relaxed">
+              <div className="space-y-6 text-stone leading-relaxed">
                 <p>
                   Echelon Elite represents the pinnacle of Dubai real estate
                   services. We specialize exclusively in premium property sales
@@ -97,8 +108,8 @@ export default function AboutPage() {
                   opportunities.
                 </p>
               </div>
-              <div className="mt-8">
-                <Button href="/contact" variant="ghost-dark">
+              <div className="mt-10">
+                <Button href="/contact" variant="secondary">
                   Connect With Us
                 </Button>
               </div>
@@ -117,15 +128,15 @@ export default function AboutPage() {
       </section>
 
       {/* Stats */}
-      <section className="py-24 bg-midnight">
+      <section className="py-32 bg-void">
         <div className="container-luxury">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <span className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl text-gold block mb-2">
+                <span className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl text-gilt block mb-3 tracking-[-0.02em]">
                   {stat.value}
                 </span>
-                <span className="text-xs uppercase tracking-widest text-alabaster/50">
+                <span className="text-[11px] uppercase tracking-[0.1em] text-paper/50">
                   {stat.label}
                 </span>
               </div>
@@ -135,9 +146,9 @@ export default function AboutPage() {
       </section>
 
       {/* Our Values */}
-      <section className="section-padding bg-alabaster">
+      <section className="section-padding bg-paper">
         <div className="container-luxury">
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="max-w-3xl mx-auto text-center mb-20">
             <SectionHeading
               label="Our Values"
               title="The Principles That Guide Us"
@@ -145,19 +156,19 @@ export default function AboutPage() {
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {values.map((value, index) => (
               <div
                 key={value.title}
-                className="p-8 border border-marble text-center"
+                className="p-10 border border-void/10 text-center"
               >
-                <span className="text-gold text-sm font-medium">
+                <span className="text-gilt text-[12px] tracking-[0.1em] uppercase">
                   0{index + 1}
                 </span>
-                <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-midnight mt-4 mb-4">
+                <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-void mt-5 mb-5 tracking-[-0.01em]">
                   {value.title}
                 </h3>
-                <p className="text-charcoal/60">{value.description}</p>
+                <p className="text-stone">{value.description}</p>
               </div>
             ))}
           </div>
@@ -165,15 +176,15 @@ export default function AboutPage() {
       </section>
 
       {/* Why Investors Trust Us */}
-      <section className="section-padding bg-marble/30">
+      <section className="section-padding bg-paper">
         <div className="container-luxury">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
             <div>
               <SectionHeading
                 label="Why Investors Trust Us"
                 title="Built on Expertise and Results"
               />
-              <ul className="space-y-6 mt-8">
+              <ul className="space-y-6 mt-10">
                 {[
                   "RERA registered and fully licensed brokerage",
                   "Authorized sales partner for top developers including Emaar, Sobha, and Damac",
@@ -182,9 +193,9 @@ export default function AboutPage() {
                   "Complete end-to-end service from selection to handover",
                   "Post-purchase concierge and property management support",
                 ].map((item, index) => (
-                  <li key={index} className="flex items-start gap-4">
+                  <li key={index} className="flex items-start gap-5">
                     <svg
-                      className="w-5 h-5 text-gold mt-0.5 flex-shrink-0"
+                      className="w-5 h-5 text-gilt mt-0.5 flex-shrink-0"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -194,38 +205,38 @@ export default function AboutPage() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    <span className="text-charcoal/80">{item}</span>
+                    <span className="text-void/70">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-midnight p-12 text-alabaster flex flex-col justify-center">
-              <span className="text-label text-gold block mb-6">
+            <div className="bg-void p-14 text-paper flex flex-col justify-center">
+              <span className="text-label text-gilt block mb-10">
                 Credentials
               </span>
-              <div className="space-y-8">
+              <div className="space-y-10">
                 <div>
-                  <span className="text-alabaster/40 text-sm">
+                  <span className="text-paper/40 text-sm">
                     RERA License
                   </span>
-                  <p className="text-alabaster text-lg mt-1">ORN: 12345</p>
+                  <p className="text-paper text-lg mt-2">ORN: 12345</p>
                 </div>
-                <div className="h-[1px] bg-alabaster/10" />
+                <div className="h-[1px] bg-paper/10" />
                 <div>
-                  <span className="text-alabaster/40 text-sm">
+                  <span className="text-paper/40 text-sm">
                     DLD Registration
                   </span>
-                  <p className="text-alabaster text-lg mt-1">
+                  <p className="text-paper text-lg mt-2">
                     Registered Broker
                   </p>
                 </div>
-                <div className="h-[1px] bg-alabaster/10" />
+                <div className="h-[1px] bg-paper/10" />
                 <div>
-                  <span className="text-alabaster/40 text-sm">
+                  <span className="text-paper/40 text-sm">
                     Developer Partnerships
                   </span>
-                  <p className="text-alabaster text-lg mt-1">
+                  <p className="text-paper text-lg mt-2">
                     Emaar, Sobha, Damac, Nakheel, Danube
                   </p>
                 </div>
@@ -236,17 +247,17 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-midnight">
+      <section className="py-32 bg-void">
         <div className="container-luxury text-center">
-          <span className="text-label text-gold block mb-6">Get in Touch</span>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl text-alabaster mb-6">
+          <span className="text-label text-gilt block mb-8">Get in Touch</span>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl text-paper mb-8 tracking-[-0.02em]">
             Ready to Invest in Dubai?
           </h2>
-          <p className="text-lg text-alabaster/60 mb-12 max-w-xl mx-auto">
+          <p className="text-lg text-paper/50 mb-14 max-w-xl mx-auto">
             Schedule a consultation with our investment advisors and discover
             how Echelon Elite can help you achieve your goals.
           </p>
-          <Button href="/contact" variant="ghost-light">
+          <Button href="/contact" variant="ghost">
             Schedule Consultation
           </Button>
         </div>
@@ -254,4 +265,3 @@ export default function AboutPage() {
     </>
   );
 }
-

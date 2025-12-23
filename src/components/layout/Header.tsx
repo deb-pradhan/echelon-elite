@@ -27,44 +27,55 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "glass py-4" : "bg-transparent py-6"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-[800ms] ${
+        isScrolled
+          ? "bg-paper/95 backdrop-blur-md py-4"
+          : "bg-transparent py-6"
       }`}
+      style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
     >
       <div className="container-luxury">
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="relative z-10">
             <Image
-              src="/images/logo-light.svg"
+              src={isScrolled ? "/images/logo-dark.svg" : "/images/logo-light.svg"}
               alt="Echelon Elite"
-              width={200}
-              height={40}
-              className="h-8 md:h-10 w-auto"
+              width={140}
+              height={32}
+              className="h-7 md:h-8 w-auto"
               priority
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-12">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-[14px] font-light tracking-[1.5px] uppercase transition-all duration-300 hover:text-gold ${
-                  isScrolled ? "text-alabaster" : "text-alabaster"
+                className={`text-[12px] font-normal tracking-[0.1em] uppercase transition-colors duration-[400ms] ${
+                  isScrolled
+                    ? "text-void hover:text-gilt"
+                    : "text-paper hover:text-gilt"
                 }`}
+                style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
               >
                 {link.label}
               </Link>
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* Desktop CTA */}
           <div className="hidden lg:block">
             <Link
               href="/contact"
-              className="btn-ghost btn-ghost-light text-[14px] font-light py-3 px-6"
+              className={`inline-flex items-center justify-center px-8 py-3 text-[12px] font-normal tracking-[0.1em] uppercase transition-all duration-[400ms] ${
+                isScrolled
+                  ? "bg-void text-paper hover:bg-[#1a1d24] hover:-translate-y-0.5"
+                  : "border border-paper/30 text-paper hover:bg-paper hover:text-void"
+              }`}
+              style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
             >
               Book Consultation
             </Link>
@@ -78,19 +89,34 @@ export function Header() {
           >
             <div className="w-6 flex flex-col gap-1.5">
               <span
-                className={`block h-[1px] bg-alabaster transition-all duration-300 ${
-                  isMobileMenuOpen ? "rotate-45 translate-y-[7px]" : ""
+                className={`block h-[1px] transition-all duration-[400ms] ${
+                  isMobileMenuOpen
+                    ? "rotate-45 translate-y-[7px] bg-paper"
+                    : isScrolled
+                    ? "bg-void"
+                    : "bg-paper"
                 }`}
+                style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
               />
               <span
-                className={`block h-[1px] bg-alabaster transition-all duration-300 ${
-                  isMobileMenuOpen ? "opacity-0" : ""
+                className={`block h-[1px] transition-all duration-[400ms] ${
+                  isMobileMenuOpen
+                    ? "opacity-0"
+                    : isScrolled
+                    ? "bg-void"
+                    : "bg-paper"
                 }`}
+                style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
               />
               <span
-                className={`block h-[1px] bg-alabaster transition-all duration-300 ${
-                  isMobileMenuOpen ? "-rotate-45 -translate-y-[7px]" : ""
+                className={`block h-[1px] transition-all duration-[400ms] ${
+                  isMobileMenuOpen
+                    ? "-rotate-45 -translate-y-[7px] bg-paper"
+                    : isScrolled
+                    ? "bg-void"
+                    : "bg-paper"
                 }`}
+                style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
               />
             </div>
           </button>
@@ -98,20 +124,24 @@ export function Header() {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden fixed inset-0 bg-midnight z-40 transition-all duration-500 ${
+          className={`lg:hidden fixed inset-0 bg-void z-40 transition-all duration-[800ms] ${
             isMobileMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
           }`}
+          style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
         >
-          <div className="flex flex-col items-center justify-center h-full gap-8">
+          <div className="flex flex-col items-center justify-center h-full gap-10">
             {navLinks.map((link, index) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-alabaster font-[family-name:var(--font-playfair)] text-3xl hover:text-gold transition-colors"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="text-paper font-[family-name:var(--font-playfair)] text-4xl md:text-5xl hover:text-gilt transition-colors duration-[400ms]"
+                style={{ 
+                  animationDelay: `${index * 0.1}s`,
+                  transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
+                }}
               >
                 {link.label}
               </Link>
@@ -119,7 +149,7 @@ export function Header() {
             <Link
               href="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="btn-ghost btn-ghost-light mt-8"
+              className="btn-ghost mt-8"
             >
               Book Consultation
             </Link>
@@ -129,4 +159,3 @@ export function Header() {
     </header>
   );
 }
-

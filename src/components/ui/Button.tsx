@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 interface ButtonProps {
   children: ReactNode;
   href?: string;
-  variant?: "ghost-light" | "ghost-dark" | "gold";
+  variant?: "primary" | "secondary" | "ghost" | "link";
   className?: string;
   onClick?: () => void;
   type?: "button" | "submit";
@@ -13,20 +13,35 @@ interface ButtonProps {
 export function Button({
   children,
   href,
-  variant = "ghost-dark",
+  variant = "primary",
   className = "",
   onClick,
   type = "button",
 }: ButtonProps) {
-  const baseClasses =
-    variant === "gold"
-      ? "link-gold"
-      : `btn-ghost ${variant === "ghost-light" ? "btn-ghost-light" : "btn-ghost-dark"}`;
+  const variantClasses = {
+    primary: "btn-primary",
+    secondary: "btn-secondary",
+    ghost: "btn-ghost",
+    link: "link-arrow",
+  };
+
+  const baseClasses = variantClasses[variant];
 
   if (href) {
     return (
       <Link href={href} className={`${baseClasses} ${className}`}>
         {children}
+        {variant === "link" && (
+          <svg
+            className="arrow w-4 h-4"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1"
+          >
+            <path d="M3 8h10M9 4l4 4-4 4" />
+          </svg>
+        )}
       </Link>
     );
   }
@@ -38,7 +53,17 @@ export function Button({
       className={`${baseClasses} ${className}`}
     >
       {children}
+      {variant === "link" && (
+        <svg
+          className="arrow w-4 h-4"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+        >
+          <path d="M3 8h10M9 4l4 4-4 4" />
+        </svg>
+      )}
     </button>
   );
 }
-

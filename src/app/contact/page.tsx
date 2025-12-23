@@ -22,16 +22,16 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-40 pb-16 bg-midnight">
+      <section className="pt-48 pb-20 bg-void">
         <div className="container-luxury">
           <div className="max-w-3xl">
-            <span className="text-label text-gold block mb-6">Contact Us</span>
-            <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl text-alabaster leading-tight mb-6">
+            <span className="text-label text-gilt block mb-8">Contact Us</span>
+            <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl text-paper leading-tight tracking-[-0.02em] mb-8">
               Begin Your <em>Investment</em>
               <br />
               Journey
             </h1>
-            <p className="text-xl text-alabaster/60">
+            <p className="text-xl text-paper/50">
               Schedule a consultation with our investment advisors. We&apos;ll
               curate properties tailored to your requirements.
             </p>
@@ -40,16 +40,16 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="section-padding bg-alabaster">
+      <section className="section-padding bg-paper">
         <div className="container-luxury">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
             {/* Form */}
             <div className="lg:col-span-7">
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <form onSubmit={handleSubmit} className="space-y-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   {/* Name */}
                   <div>
-                    <label className="text-label text-charcoal/50 block mb-3">
+                    <label className="text-label text-void/50 block mb-4">
                       Full Name *
                     </label>
                     <input
@@ -59,14 +59,14 @@ export default function ContactPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
                       }
-                      className="w-full bg-transparent border-b border-marble py-3 focus:border-gold outline-none transition-colors text-midnight"
+                      className="input-line"
                       placeholder="John Smith"
                     />
                   </div>
 
                   {/* Email */}
                   <div>
-                    <label className="text-label text-charcoal/50 block mb-3">
+                    <label className="text-label text-void/50 block mb-4">
                       Email *
                     </label>
                     <input
@@ -76,14 +76,14 @@ export default function ContactPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
-                      className="w-full bg-transparent border-b border-marble py-3 focus:border-gold outline-none transition-colors text-midnight"
+                      className="input-line"
                       placeholder="john@example.com"
                     />
                   </div>
 
                   {/* Phone */}
                   <div>
-                    <label className="text-label text-charcoal/50 block mb-3">
+                    <label className="text-label text-void/50 block mb-4">
                       Phone Number *
                     </label>
                     <input
@@ -93,14 +93,14 @@ export default function ContactPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, phone: e.target.value })
                       }
-                      className="w-full bg-transparent border-b border-marble py-3 focus:border-gold outline-none transition-colors text-midnight"
+                      className="input-line"
                       placeholder="+1 234 567 8900"
                     />
                   </div>
 
                   {/* Country */}
                   <div>
-                    <label className="text-label text-charcoal/50 block mb-3">
+                    <label className="text-label text-void/50 block mb-4">
                       Country of Residence *
                     </label>
                     <input
@@ -110,7 +110,7 @@ export default function ContactPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, country: e.target.value })
                       }
-                      className="w-full bg-transparent border-b border-marble py-3 focus:border-gold outline-none transition-colors text-midnight"
+                      className="input-line"
                       placeholder="United Kingdom"
                     />
                   </div>
@@ -118,7 +118,7 @@ export default function ContactPage() {
 
                 {/* Budget */}
                 <div>
-                  <label className="text-label text-charcoal/50 block mb-3">
+                  <label className="text-label text-void/50 block mb-4">
                     Investment Budget
                   </label>
                   <select
@@ -126,7 +126,7 @@ export default function ContactPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, budget: e.target.value })
                     }
-                    className="w-full bg-transparent border-b border-marble py-3 focus:border-gold outline-none transition-colors text-midnight cursor-pointer"
+                    className="input-line cursor-pointer"
                   >
                     <option value="">Select Budget Range</option>
                     <option value="2-5">AED 2 - 5 Million</option>
@@ -138,7 +138,7 @@ export default function ContactPage() {
 
                 {/* Interest */}
                 <div>
-                  <label className="text-label text-charcoal/50 block mb-3">
+                  <label className="text-label text-void/50 block mb-4">
                     I&apos;m interested in
                   </label>
                   <select
@@ -146,7 +146,7 @@ export default function ContactPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, interest: e.target.value })
                     }
-                    className="w-full bg-transparent border-b border-marble py-3 focus:border-gold outline-none transition-colors text-midnight cursor-pointer"
+                    className="input-line cursor-pointer"
                   >
                     <option value="">Select Your Interest</option>
                     <option value="apartments">Luxury Apartments</option>
@@ -160,7 +160,7 @@ export default function ContactPage() {
 
                 {/* Message */}
                 <div>
-                  <label className="text-label text-charcoal/50 block mb-3">
+                  <label className="text-label text-void/50 block mb-4">
                     Additional Information
                   </label>
                   <textarea
@@ -169,13 +169,13 @@ export default function ContactPage() {
                       setFormData({ ...formData, message: e.target.value })
                     }
                     rows={4}
-                    className="w-full bg-transparent border-b border-marble py-3 focus:border-gold outline-none transition-colors text-midnight resize-none"
+                    className="input-line resize-none"
                     placeholder="Tell us about your investment goals, preferred locations, or any specific requirements..."
                   />
                 </div>
 
                 {/* Submit */}
-                <button type="submit" className="btn-ghost btn-ghost-dark">
+                <button type="submit" className="btn-secondary">
                   Submit Enquiry
                 </button>
               </form>
@@ -183,20 +183,21 @@ export default function ContactPage() {
 
             {/* Contact Info */}
             <div className="lg:col-span-5">
-              <div className="bg-midnight p-10 text-alabaster h-full">
-                <span className="text-label text-gold block mb-8">
+              <div className="bg-void p-12 text-paper h-full">
+                <span className="text-label text-gilt block mb-10">
                   Get in Touch
                 </span>
 
-                <div className="space-y-8">
+                <div className="space-y-10">
                   {/* Phone */}
                   <div>
-                    <span className="text-alabaster/40 text-sm block mb-2">
+                    <span className="text-paper/40 text-sm block mb-3">
                       Phone
                     </span>
                     <a
                       href="tel:+97145551234"
-                      className="text-lg hover:text-gold transition-colors"
+                      className="text-lg hover:text-gilt transition-colors duration-[400ms]"
+                      style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
                     >
                       +971 4 555 1234
                     </a>
@@ -204,12 +205,13 @@ export default function ContactPage() {
 
                   {/* WhatsApp */}
                   <div>
-                    <span className="text-alabaster/40 text-sm block mb-2">
+                    <span className="text-paper/40 text-sm block mb-3">
                       WhatsApp
                     </span>
                     <a
                       href="https://wa.me/97145551234"
-                      className="text-lg hover:text-gold transition-colors inline-flex items-center gap-2"
+                      className="text-lg hover:text-gilt transition-colors duration-[400ms] inline-flex items-center gap-3"
+                      style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
                     >
                       <svg
                         className="w-5 h-5"
@@ -224,12 +226,13 @@ export default function ContactPage() {
 
                   {/* Email */}
                   <div>
-                    <span className="text-alabaster/40 text-sm block mb-2">
+                    <span className="text-paper/40 text-sm block mb-3">
                       Email
                     </span>
                     <a
                       href="mailto:invest@echelonelite.ae"
-                      className="text-lg hover:text-gold transition-colors"
+                      className="text-lg hover:text-gilt transition-colors duration-[400ms]"
+                      style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
                     >
                       invest@echelonelite.ae
                     </a>
@@ -237,7 +240,7 @@ export default function ContactPage() {
 
                   {/* Address */}
                   <div>
-                    <span className="text-alabaster/40 text-sm block mb-2">
+                    <span className="text-paper/40 text-sm block mb-3">
                       Office
                     </span>
                     <p className="text-lg leading-relaxed">
@@ -251,7 +254,7 @@ export default function ContactPage() {
 
                   {/* Hours */}
                   <div>
-                    <span className="text-alabaster/40 text-sm block mb-2">
+                    <span className="text-paper/40 text-sm block mb-3">
                       Hours
                     </span>
                     <p>
@@ -263,14 +266,15 @@ export default function ContactPage() {
                 </div>
 
                 {/* Social Links */}
-                <div className="mt-12 pt-8 border-t border-alabaster/10">
-                  <span className="text-alabaster/40 text-sm block mb-4">
+                <div className="mt-14 pt-10 border-t border-paper/10">
+                  <span className="text-paper/40 text-sm block mb-5">
                     Follow Us
                   </span>
                   <div className="flex gap-4">
                     <a
                       href="#"
-                      className="w-10 h-10 border border-alabaster/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors"
+                      className="w-11 h-11 border border-paper/20 flex items-center justify-center hover:border-gilt hover:text-gilt transition-colors duration-[400ms]"
+                      style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
                     >
                       <svg
                         className="w-4 h-4"
@@ -282,7 +286,8 @@ export default function ContactPage() {
                     </a>
                     <a
                       href="#"
-                      className="w-10 h-10 border border-alabaster/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors"
+                      className="w-11 h-11 border border-paper/20 flex items-center justify-center hover:border-gilt hover:text-gilt transition-colors duration-[400ms]"
+                      style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
                     >
                       <svg
                         className="w-4 h-4"
@@ -294,7 +299,8 @@ export default function ContactPage() {
                     </a>
                     <a
                       href="#"
-                      className="w-10 h-10 border border-alabaster/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors"
+                      className="w-11 h-11 border border-paper/20 flex items-center justify-center hover:border-gilt hover:text-gilt transition-colors duration-[400ms]"
+                      style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
                     >
                       <svg
                         className="w-4 h-4"
@@ -314,4 +320,3 @@ export default function ContactPage() {
     </>
   );
 }
-

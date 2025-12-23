@@ -69,9 +69,9 @@ export function GoldenVisaFAQ() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section-padding bg-alabaster">
+    <section ref={sectionRef} className="section-padding bg-paper">
       <div className="container-luxury">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
           {/* Left Column */}
           <div className="lg:col-span-4">
             <SectionHeading
@@ -79,29 +79,29 @@ export function GoldenVisaFAQ() {
               title="Frequently Asked Questions"
               subtitle="Everything you need to know about the Dubai Golden Visa through property investment."
             />
-            <div className="mt-8 p-6 bg-midnight text-alabaster">
-              <span className="text-label text-gold block mb-4">
+            <div className="mt-10 p-8 bg-void text-paper">
+              <span className="text-label text-gilt block mb-5">
                 Need More Help?
               </span>
-              <p className="text-alabaster/60 mb-6 text-sm leading-relaxed">
+              <p className="text-paper/50 mb-8 text-sm leading-relaxed">
                 Our Golden Visa specialists are available to answer any specific
                 questions about your situation.
               </p>
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 text-gold text-sm hover:underline"
+                className="link-arrow text-gilt"
               >
                 Schedule a Consultation
                 <svg
-                  className="w-4 h-4"
+                  className="arrow w-4 h-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  strokeWidth="1"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
                     d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
                 </svg>
@@ -115,48 +115,53 @@ export function GoldenVisaFAQ() {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className={`border-b border-marble transition-all duration-500 ${
+                  className={`border-b border-void/10 transition-all duration-[600ms] ${
                     isVisible
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-4"
                   }`}
-                  style={{ transitionDelay: `${index * 50}ms` }}
+                  style={{ 
+                    transitionDelay: `${index * 50}ms`,
+                    transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
+                  }}
                 >
                   <button
                     onClick={() =>
                       setOpenIndex(openIndex === index ? null : index)
                     }
-                    className="w-full py-6 flex items-start justify-between gap-4 text-left"
+                    className="w-full py-8 flex items-start justify-between gap-6 text-left"
                   >
-                    <span className="font-[family-name:var(--font-playfair)] text-lg text-midnight">
+                    <span className="font-[family-name:var(--font-playfair)] text-lg text-void tracking-[-0.01em]">
                       {faq.question}
                     </span>
                     <span
-                      className={`text-gold flex-shrink-0 transition-transform duration-300 ${
+                      className={`text-gilt flex-shrink-0 transition-transform duration-[400ms] ${
                         openIndex === index ? "rotate-45" : ""
                       }`}
+                      style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
                     >
                       <svg
                         className="w-5 h-5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
+                        strokeWidth="1"
                       >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          strokeWidth={1.5}
                           d="M12 4.5v15m7.5-7.5h-15"
                         />
                       </svg>
                     </span>
                   </button>
                   <div
-                    className={`overflow-hidden transition-all duration-300 ${
-                      openIndex === index ? "max-h-96 pb-6" : "max-h-0"
+                    className={`overflow-hidden transition-all duration-[400ms] ${
+                      openIndex === index ? "max-h-96 pb-8" : "max-h-0"
                     }`}
+                    style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
                   >
-                    <p className="text-charcoal/60 leading-relaxed pr-12">
+                    <p className="text-stone leading-relaxed pr-12">
                       {faq.answer}
                     </p>
                   </div>
@@ -169,4 +174,3 @@ export function GoldenVisaFAQ() {
     </section>
   );
 }
-

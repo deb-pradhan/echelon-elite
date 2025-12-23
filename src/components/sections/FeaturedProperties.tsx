@@ -1,8 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PropertyCard } from "@/components/property/PropertyCard";
-import { Button } from "@/components/ui/Button";
 
 const featuredProperties = [
   {
@@ -45,24 +45,33 @@ const featuredProperties = [
 
 export function FeaturedProperties() {
   return (
-    <section className="section-padding bg-alabaster">
+    <section className="section-padding bg-paper">
       <div className="container-luxury">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-20">
           <SectionHeading
             label="Premium Collection"
             title="Featured Properties"
             subtitle="Handpicked luxury residences for the discerning investor"
           />
-          <div className="mt-8 md:mt-0">
-            <Button href="/properties" variant="gold">
-              View All Properties →
-            </Button>
+          <div className="mt-10 md:mt-0">
+            <Link href="/properties" className="link-arrow">
+              View All Properties
+              <svg
+                className="arrow w-4 h-4"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+              >
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </Link>
           </div>
         </div>
 
         {/* Properties Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
           {featuredProperties.map((property) => (
             <PropertyCard key={property.id} {...property} />
           ))}
@@ -71,4 +80,3 @@ export function FeaturedProperties() {
     </section>
   );
 }
-

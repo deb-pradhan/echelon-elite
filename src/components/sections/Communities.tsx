@@ -1,7 +1,6 @@
 "use client";
 
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -67,20 +66,29 @@ export function Communities() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section-padding bg-midnight">
+    <section ref={sectionRef} className="section-padding section-dark">
       <div className="container-luxury">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-20">
           <SectionHeading
             label="Prime Locations"
             title="Browse by Community"
             subtitle="Discover Dubai's most prestigious neighborhoods"
             theme="dark"
           />
-          <div className="mt-8 md:mt-0">
-            <Button href="/communities" variant="gold">
-              View All Communities →
-            </Button>
+          <div className="mt-10 md:mt-0">
+            <Link href="/communities" className="link-arrow text-gilt">
+              View All Communities
+              <svg
+                className="arrow w-4 h-4"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+              >
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </Link>
           </div>
         </div>
 
@@ -90,58 +98,64 @@ export function Communities() {
             <Link
               key={community.slug}
               href={`/communities/${community.slug}`}
-              className={`group relative aspect-[3/4] overflow-hidden transition-all duration-700 ${
+              className={`group relative aspect-[3/4] overflow-hidden transition-all duration-[800ms] ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-12"
               }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              style={{ 
+                transitionDelay: `${index * 100}ms`,
+                transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
+              }}
             >
               {/* Image */}
               <Image
                 src={community.image}
                 alt={community.name}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover transition-transform duration-[600ms] group-hover:scale-105"
+                style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
               />
 
               {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-void via-void/30 to-transparent" />
 
               {/* Content */}
-              <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                <span className="text-[10px] uppercase tracking-widest text-gold mb-2">
+              <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                <span className="text-[10px] uppercase tracking-[0.15em] text-gilt mb-3">
                   {community.properties} Properties
                 </span>
-                <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-alabaster mb-1">
+                <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-paper mb-2 tracking-[-0.01em]">
                   {community.name}
                 </h3>
-                <p className="text-sm text-alabaster/60 mb-4">
+                <p className="text-sm text-paper/60 mb-6">
                   {community.description}
                 </p>
 
                 {/* Stats Row */}
-                <div className="flex items-center gap-4 pt-4 border-t border-alabaster/10">
+                <div className="flex items-center gap-4 pt-5 border-t border-paper/10">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-alabaster/40">Avg ROI</span>
-                    <span className="text-gold text-sm font-medium">
+                    <span className="text-[11px] text-paper/40 uppercase tracking-[0.1em]">Avg ROI</span>
+                    <span className="text-gilt text-sm font-normal">
                       {community.avgRoi}
                     </span>
                   </div>
                 </div>
 
                 {/* Hover Arrow */}
-                <div className="absolute top-6 right-6 w-10 h-10 border border-alabaster/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
+                <div className="absolute top-8 right-8 w-10 h-10 border border-paper/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-[400ms] translate-x-2 group-hover:translate-x-0"
+                  style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
+                >
                   <svg
-                    className="w-4 h-4 text-alabaster"
+                    className="w-4 h-4 text-paper"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    strokeWidth="1"
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth={1.5}
                       d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
                     />
                   </svg>
@@ -154,4 +168,3 @@ export function Communities() {
     </section>
   );
 }
-

@@ -88,16 +88,16 @@ export default function DevelopersPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-40 pb-16 bg-midnight">
+      <section className="pt-48 pb-20 bg-void">
         <div className="container-luxury">
           <div className="max-w-3xl">
-            <span className="text-label text-gold block mb-6">
+            <span className="text-label text-gilt block mb-8">
               Premier Developers
             </span>
-            <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl text-alabaster leading-tight mb-6">
+            <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl text-paper leading-tight tracking-[-0.02em] mb-8">
               Dubai&apos;s Top Developers
             </h1>
-            <p className="text-xl text-alabaster/60">
+            <p className="text-xl text-paper/50">
               We partner exclusively with Dubai&apos;s most reputable developers,
               ensuring quality, reliability, and investment security.
             </p>
@@ -106,15 +106,13 @@ export default function DevelopersPage() {
       </section>
 
       {/* Developer List */}
-      <section className="section-padding bg-alabaster">
+      <section className="section-padding bg-paper">
         <div className="container-luxury">
-          <div className="space-y-32">
+          <div className="space-y-40">
             {developers.map((developer, index) => (
               <div
                 key={developer.slug}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${
-                  index % 2 === 1 ? "" : ""
-                }`}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"
               >
                 {/* Image */}
                 <div
@@ -129,8 +127,8 @@ export default function DevelopersPage() {
                     className="object-cover"
                   />
                   {/* Logo Overlay */}
-                  <div className="absolute top-6 left-6 bg-midnight/80 backdrop-blur-sm px-6 py-3">
-                    <span className="font-[family-name:var(--font-playfair)] text-xl text-alabaster">
+                  <div className="absolute top-8 left-8 bg-void/80 backdrop-blur-sm px-8 py-4">
+                    <span className="font-[family-name:var(--font-playfair)] text-xl text-paper">
                       {developer.logo}
                     </span>
                   </div>
@@ -138,54 +136,54 @@ export default function DevelopersPage() {
 
                 {/* Content */}
                 <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                  <span className="text-label text-gold block mb-4">
+                  <span className="text-label text-gilt block mb-5">
                     {developer.tagline}
                   </span>
-                  <h2 className="font-[family-name:var(--font-playfair)] text-4xl text-midnight mb-4">
+                  <h2 className="font-[family-name:var(--font-playfair)] text-4xl text-void mb-5 tracking-[-0.02em]">
                     {developer.name}
                   </h2>
-                  <p className="text-charcoal/60 leading-relaxed mb-8">
+                  <p className="text-stone leading-relaxed mb-10">
                     {developer.description}
                   </p>
 
                   {/* Stats */}
-                  <div className="grid grid-cols-3 gap-6 mb-8">
+                  <div className="grid grid-cols-3 gap-8 mb-10">
                     <div>
-                      <span className="font-[family-name:var(--font-playfair)] text-2xl text-midnight block">
+                      <span className="font-[family-name:var(--font-playfair)] text-2xl text-void block tracking-[-0.01em]">
                         {developer.properties}
                       </span>
-                      <span className="text-xs uppercase tracking-widest text-charcoal/50">
+                      <span className="text-[11px] uppercase tracking-[0.1em] text-stone">
                         Properties
                       </span>
                     </div>
                     <div>
-                      <span className="font-[family-name:var(--font-playfair)] text-2xl text-midnight block">
+                      <span className="font-[family-name:var(--font-playfair)] text-2xl text-void block tracking-[-0.01em]">
                         {developer.established}
                       </span>
-                      <span className="text-xs uppercase tracking-widest text-charcoal/50">
+                      <span className="text-[11px] uppercase tracking-[0.1em] text-stone">
                         Established
                       </span>
                     </div>
                     <div>
-                      <span className="font-[family-name:var(--font-playfair)] text-2xl text-gold block">
+                      <span className="font-[family-name:var(--font-playfair)] text-2xl text-gilt block">
                         ★
                       </span>
-                      <span className="text-xs uppercase tracking-widest text-charcoal/50">
+                      <span className="text-[11px] uppercase tracking-[0.1em] text-stone">
                         Premium
                       </span>
                     </div>
                   </div>
 
                   {/* Projects */}
-                  <div className="mb-8">
-                    <span className="text-label text-charcoal/50 block mb-3">
+                  <div className="mb-10">
+                    <span className="text-label text-stone block mb-4">
                       Key Projects
                     </span>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-3">
                       {developer.projects.map((project) => (
                         <span
                           key={project}
-                          className="px-4 py-2 bg-marble/50 text-sm text-charcoal/70"
+                          className="px-5 py-3 bg-void/5 text-sm text-void/70"
                         >
                           {project}
                         </span>
@@ -194,7 +192,7 @@ export default function DevelopersPage() {
                   </div>
 
                   {/* Highlight */}
-                  <div className="flex items-center gap-3 mb-8 text-gold">
+                  <div className="flex items-center gap-4 mb-10 text-gilt">
                     <svg
                       className="w-5 h-5"
                       fill="currentColor"
@@ -211,7 +209,7 @@ export default function DevelopersPage() {
 
                   <Link
                     href={`/developers/${developer.slug}`}
-                    className="btn-ghost btn-ghost-dark"
+                    className="btn-secondary"
                   >
                     View {developer.name} Properties
                   </Link>
@@ -223,7 +221,7 @@ export default function DevelopersPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-midnight">
+      <section className="py-32 bg-void">
         <div className="container-luxury">
           <div className="max-w-3xl mx-auto text-center">
             <SectionHeading
@@ -233,8 +231,8 @@ export default function DevelopersPage() {
               align="center"
               theme="dark"
             />
-            <div className="mt-8">
-              <Link href="/contact" className="btn-ghost btn-ghost-light">
+            <div className="mt-10">
+              <Link href="/contact" className="btn-ghost">
                 Get Priority Access
               </Link>
             </div>
@@ -244,4 +242,3 @@ export default function DevelopersPage() {
     </>
   );
 }
-

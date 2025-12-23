@@ -9,8 +9,8 @@ const requirements = [
     description:
       "Purchase property worth AED 2 million or more. Off-plan properties also qualify if minimum investment threshold is met.",
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819" />
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819" />
       </svg>
     ),
   },
@@ -19,8 +19,8 @@ const requirements = [
     description:
       "Passport valid for at least 6 months from application date. No criminal record required.",
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
       </svg>
     ),
   },
@@ -29,8 +29,8 @@ const requirements = [
     description:
       "Valid UAE health insurance is required for the applicant and all dependents included in the application.",
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
       </svg>
     ),
   },
@@ -39,8 +39,8 @@ const requirements = [
     description:
       "Property must be fully paid or mortgaged to UAE banks. You'll need the official Title Deed from DLD.",
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
       </svg>
     ),
   },
@@ -77,10 +77,10 @@ export function GoldenVisaOverview() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section-padding bg-alabaster">
+    <section ref={sectionRef} className="section-padding bg-paper">
       <div className="container-luxury">
         {/* Intro */}
-        <div className="max-w-3xl mb-20">
+        <div className="max-w-3xl mb-24">
           <SectionHeading
             label="What is the Golden Visa?"
             title="Long-Term Residency Through Property Investment"
@@ -89,22 +89,25 @@ export function GoldenVisaOverview() {
         </div>
 
         {/* Requirements Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-32">
           {requirements.map((req, index) => (
             <div
               key={req.title}
-              className={`bg-white p-8 transition-all duration-700 ${
+              className={`bg-paper p-10 border border-void/10 transition-all duration-[800ms] ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
               }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              style={{ 
+                transitionDelay: `${index * 100}ms`,
+                transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
+              }}
             >
-              <div className="text-gold mb-6">{req.icon}</div>
-              <h3 className="font-[family-name:var(--font-playfair)] text-xl text-midnight mb-3">
+              <div className="text-gilt mb-8">{req.icon}</div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-xl text-void mb-4 tracking-[-0.01em]">
                 {req.title}
               </h3>
-              <p className="text-charcoal/60 leading-relaxed">
+              <p className="text-stone leading-relaxed">
                 {req.description}
               </p>
             </div>
@@ -112,27 +115,30 @@ export function GoldenVisaOverview() {
         </div>
 
         {/* Benefits */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>
-            <span className="text-label text-gold block mb-4">Benefits</span>
-            <h2 className="font-[family-name:var(--font-playfair)] text-4xl text-midnight mb-8">
+            <span className="text-label text-gilt block mb-6">Benefits</span>
+            <h2 className="font-[family-name:var(--font-playfair)] text-4xl text-void mb-10 tracking-[-0.02em]">
               Why Choose the
               <br />
               Golden Visa?
             </h2>
-            <ul className="space-y-4">
+            <ul className="space-y-5">
               {benefits.map((benefit, index) => (
                 <li
                   key={index}
-                  className={`flex items-start gap-4 transition-all duration-500 ${
+                  className={`flex items-start gap-5 transition-all duration-[600ms] ${
                     isVisible
                       ? "opacity-100 translate-x-0"
                       : "opacity-0 -translate-x-4"
                   }`}
-                  style={{ transitionDelay: `${400 + index * 100}ms` }}
+                  style={{ 
+                    transitionDelay: `${400 + index * 100}ms`,
+                    transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
+                  }}
                 >
                   <svg
-                    className="w-5 h-5 text-gold mt-0.5 flex-shrink-0"
+                    className="w-5 h-5 text-gilt mt-0.5 flex-shrink-0"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -142,41 +148,41 @@ export function GoldenVisaOverview() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span className="text-charcoal/80">{benefit}</span>
+                  <span className="text-void/70">{benefit}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* Stats */}
-          <div className="bg-midnight p-12 text-alabaster">
-            <span className="text-label text-gold block mb-8">
+          <div className="bg-void p-14 text-paper">
+            <span className="text-label text-gilt block mb-10">
               Golden Visa Stats
             </span>
-            <div className="space-y-8">
+            <div className="space-y-10">
               <div>
-                <span className="font-[family-name:var(--font-playfair)] text-5xl text-gold">
+                <span className="font-[family-name:var(--font-playfair)] text-5xl text-gilt tracking-[-0.02em]">
                   150,000+
                 </span>
-                <p className="text-alabaster/60 mt-2">
+                <p className="text-paper/50 mt-3">
                   Golden Visas issued since launch
                 </p>
               </div>
-              <div className="h-[1px] bg-alabaster/10" />
+              <div className="h-[1px] bg-paper/10" />
               <div>
-                <span className="font-[family-name:var(--font-playfair)] text-5xl text-gold">
+                <span className="font-[family-name:var(--font-playfair)] text-5xl text-gilt tracking-[-0.02em]">
                   AED 2M
                 </span>
-                <p className="text-alabaster/60 mt-2">
+                <p className="text-paper/50 mt-3">
                   Minimum property investment
                 </p>
               </div>
-              <div className="h-[1px] bg-alabaster/10" />
+              <div className="h-[1px] bg-paper/10" />
               <div>
-                <span className="font-[family-name:var(--font-playfair)] text-5xl text-gold">
+                <span className="font-[family-name:var(--font-playfair)] text-5xl text-gilt tracking-[-0.02em]">
                   10 Years
                 </span>
-                <p className="text-alabaster/60 mt-2">
+                <p className="text-paper/50 mt-3">
                   Renewable residency permit
                 </p>
               </div>
@@ -187,4 +193,3 @@ export function GoldenVisaOverview() {
     </section>
   );
 }
-

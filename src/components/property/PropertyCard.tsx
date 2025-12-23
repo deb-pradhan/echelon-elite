@@ -28,61 +28,61 @@ export function PropertyCard({
 }: PropertyCardProps) {
   return (
     <Link href={`/properties/${id}`} className="group block">
-      {/* Image Container */}
-      <div className="relative aspect-[4/5] overflow-hidden bg-marble mb-6">
+      {/* Image Container - 4:5 Aspect Ratio per design system */}
+      <div className="relative aspect-[4/5] overflow-hidden bg-paper mb-8">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className="object-cover transition-transform duration-[600ms] group-hover:scale-105"
+          style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
         />
-        {/* Status Badge */}
-        <div className="absolute top-4 left-4 flex items-center gap-2">
-          <span
-            className={`w-2 h-2 rounded-full ${
-              status === "available" ? "bg-green-500" : "bg-charcoal/50"
-            }`}
-          />
-          <span className="text-[10px] uppercase tracking-widest text-alabaster font-medium">
-            {status === "available" ? "Available" : "Sold"}
+        {/* Status Pill */}
+        <div className="absolute top-5 right-5">
+          <span className="status-pill">
+            {status === "available" ? "Open" : "Sold"}
           </span>
         </div>
         {/* Golden Visa Badge */}
         {goldenVisaEligible && (
-          <div className="absolute top-4 right-4">
-            <span className="text-[10px] uppercase tracking-widest text-gold font-medium bg-midnight/80 backdrop-blur-sm px-3 py-1.5">
+          <div className="absolute top-5 left-5">
+            <span className="text-[10px] uppercase tracking-[0.15em] text-paper font-normal bg-void/80 backdrop-blur-sm px-4 py-2">
               Golden Visa
             </span>
           </div>
         )}
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {/* Subtle overlay on hover */}
+        <div 
+          className="absolute inset-0 bg-void/0 group-hover:bg-void/10 transition-colors duration-[400ms]"
+          style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
+        />
       </div>
 
-      {/* Content */}
+      {/* Content - Typography below image per design system */}
       <div>
         {/* Developer Label */}
-        <span className="text-[10px] uppercase tracking-[2px] text-charcoal/50 font-medium">
+        <span className="text-label text-stone">
           {developer}
         </span>
-        {/* Title */}
-        <h3 className="font-[family-name:var(--font-playfair)] text-xl mt-2 text-midnight group-hover:text-charcoal transition-colors">
+        {/* Title - Serif H3 */}
+        <h3 className="font-[family-name:var(--font-playfair)] text-2xl mt-3 text-void group-hover:text-gilt transition-colors duration-[400ms] tracking-[-0.01em]"
+          style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
+        >
           {title}
         </h3>
         {/* Location */}
-        <p className="text-sm text-charcoal/60 mt-1">{location}</p>
+        <p className="text-sm text-stone mt-2">{location}</p>
         {/* Details */}
-        <div className="flex items-center gap-4 mt-3 text-xs text-charcoal/50">
+        <div className="flex items-center gap-4 mt-4 text-sm text-stone">
           {bedrooms && <span>{bedrooms}</span>}
-          {bedrooms && size && <span className="w-1 h-1 bg-charcoal/30 rounded-full" />}
+          {bedrooms && size && <span className="w-1 h-1 bg-stone/50 rounded-full" />}
           {size && <span>{size}</span>}
         </div>
-        {/* Price */}
-        <p className="mt-4 text-sm text-charcoal">
-          Starting from <span className="font-medium">{price}</span>
+        {/* Price - Sans Regular */}
+        <p className="mt-5 text-sm text-void">
+          Starting from <span className="font-normal">{price}</span>
         </p>
       </div>
     </Link>
   );
 }
-

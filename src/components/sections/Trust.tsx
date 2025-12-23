@@ -49,20 +49,23 @@ export function Trust() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-marble/30">
+    <section ref={sectionRef} className="py-32 bg-paper">
       <div className="container-luxury">
         {/* Trust Badges */}
         <div
-          className={`flex flex-wrap justify-center items-center gap-12 md:gap-20 mb-16 transition-all duration-700 ${
+          className={`flex flex-wrap justify-center items-center gap-16 md:gap-24 mb-20 transition-all duration-[800ms] ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
+          style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
         >
           {trustElements.map((element) => (
             <div key={element.logo} className="text-center group">
-              <span className="font-[family-name:var(--font-playfair)] text-2xl text-charcoal/30 group-hover:text-charcoal/60 transition-colors">
+              <span className="font-[family-name:var(--font-playfair)] text-2xl text-void/25 group-hover:text-void/50 transition-colors duration-[400ms]"
+                style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
+              >
                 {element.logo}
               </span>
-              <span className="block text-[10px] uppercase tracking-widest text-charcoal/40 mt-1">
+              <span className="block text-[10px] uppercase tracking-[0.15em] text-void/35 mt-2">
                 {element.description}
               </span>
             </div>
@@ -70,27 +73,31 @@ export function Trust() {
         </div>
 
         {/* Divider */}
-        <div className="flex items-center justify-center gap-6 mb-16">
-          <div className="w-16 h-[1px] bg-marble" />
-          <span className="text-[10px] uppercase tracking-widest text-charcoal/30">
+        <div className="flex items-center justify-center gap-8 mb-20">
+          <div className="w-20 h-[1px] bg-void/10" />
+          <span className="text-[10px] uppercase tracking-[0.15em] text-void/25">
             Recognition
           </span>
-          <div className="w-16 h-[1px] bg-marble" />
+          <div className="w-20 h-[1px] bg-void/10" />
         </div>
 
         {/* Awards */}
         <div
-          className={`flex flex-wrap justify-center items-center gap-8 md:gap-16 transition-all duration-700 delay-200 ${
+          className={`flex flex-wrap justify-center items-center gap-10 md:gap-20 transition-all duration-[800ms] ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
+          style={{ 
+            transitionDelay: "200ms",
+            transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
+          }}
         >
           {awards.map((award) => (
             <div
               key={award}
-              className="flex items-center gap-3 text-charcoal/50"
+              className="flex items-center gap-4 text-void/50"
             >
               <svg
-                className="w-5 h-5 text-gold"
+                className="w-5 h-5 text-gilt"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -107,9 +114,13 @@ export function Trust() {
 
         {/* Group Company Note */}
         <p
-          className={`text-center text-sm text-charcoal/40 mt-16 transition-all duration-700 delay-300 ${
+          className={`text-center text-sm text-void/40 mt-20 transition-all duration-[800ms] ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
+          style={{ 
+            transitionDelay: "300ms",
+            transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
+          }}
         >
           Part of the Echelon Group of Companies — Trusted by over 1,000
           international investors
@@ -118,4 +129,3 @@ export function Trust() {
     </section>
   );
 }
-

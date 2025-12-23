@@ -1,123 +1,215 @@
 @import "tailwindcss";
 
-/* Echelon Elite Design System */
+/* ============================================
+   The Blueprint: Luxury Real Estate Design System
+   Version: 1.0.0
+   Philosophy: "Essentialism & Grandeur"
+   ============================================ */
+
 :root {
-  /* Primary Colors */
-  --midnight-obsidian: #0A0A0B;
-  --alabaster-silk: #FAFAF9;
+  /* Primary Palette (The Brand Anchor) */
+  --color-primary-void: #0F1115;
+  --color-primary-paper: #F4F1ED;
+  --color-accent-gilt: #C5A065;
   
-  /* Accent Colors */
-  --champagne-gold: #D4AF37;
-  --burnished-bronze: #9C7C38;
+  /* Secondary Palette (Support & Texture) */
+  --color-secondary-stone: #8E8D8A;
+  --color-secondary-moss: #2C3E33;
+  --color-surface-overlay: rgba(15, 17, 21, 0.4);
   
-  /* Functional Colors */
-  --charcoal-slate: #333333;
-  --marble-grey: #E5E5E5;
+  /* Semantic Colors */
+  --color-error: #9E2A2B;
+  --color-success: #4B6455;
+  --color-border: rgba(15, 17, 21, 0.1);
+  --color-border-light: rgba(15, 17, 21, 0.05);
   
-  /* Semantic */
-  --background: var(--alabaster-silk);
-  --foreground: var(--charcoal-slate);
-  --background-dark: var(--midnight-obsidian);
-  --foreground-dark: var(--alabaster-silk);
+  /* Spacing Tokens (8pt Grid - "The Breath") */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 32px;
+  --space-lg: 64px;
+  --space-xl: 128px;
+  --space-2xl: 192px;
+  
+  /* Motion - "The Eames Curve" */
+  --ease-luxury: cubic-bezier(0.2, 0.0, 0.2, 1);
+  --duration-micro: 0.4s;
+  --duration-page: 0.8s;
+  --duration-slow: 1.2s;
 }
 
 @theme inline {
-  --color-midnight: #0A0A0B;
-  --color-alabaster: #FAFAF9;
-  --color-gold: #D4AF37;
-  --color-bronze: #9C7C38;
-  --color-charcoal: #333333;
-  --color-marble: #E5E5E5;
+  --color-void: #0F1115;
+  --color-paper: #F4F1ED;
+  --color-gilt: #C5A065;
+  --color-stone: #8E8D8A;
+  --color-moss: #2C3E33;
   --font-serif: var(--font-playfair);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-lato);
 }
 
-/* Base Styles */
+/* ============================================
+   Base Styles
+   ============================================ */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--alabaster-silk);
-  color: var(--charcoal-slate);
-  font-family: var(--font-inter), system-ui, sans-serif;
-  line-height: 1.6;
+  background: var(--color-primary-paper);
+  color: var(--color-primary-void);
+  font-family: var(--font-lato), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography */
+/* ============================================
+   Typography - "Editorial Architecture"
+   ============================================ */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-playfair), Georgia, serif;
   font-weight: 400;
+  color: var(--color-primary-void);
   letter-spacing: -0.02em;
+}
+
+/* Display XL - Hero Sections */
+.text-display-xl {
+  font-size: clamp(64px, 10vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+/* Heading H1 */
+.text-h1 {
+  font-size: clamp(48px, 6vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Heading H2 */
+.text-h2 {
+  font-size: clamp(36px, 4vw, 48px);
   line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* Heading H3 */
+.text-h3 {
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.3;
+}
+
+/* Body Lead */
+.text-lead {
+  font-size: 20px;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* Caption/Label - The Engraved Look */
+.text-label {
+  font-family: var(--font-lato), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-secondary-stone);
+}
+
+.text-label-line {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-secondary-stone);
+}
+
+.text-label-line::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--color-secondary-stone);
 }
 
 /* Selection */
 ::selection {
-  background: var(--champagne-gold);
-  color: var(--midnight-obsidian);
+  background: var(--color-accent-gilt);
+  color: var(--color-primary-paper);
 }
 
-/* Scrollbar */
+/* ============================================
+   Scrollbar - Subtle & Refined
+   ============================================ */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--alabaster-silk);
+  background: var(--color-primary-paper);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--marble-grey);
-  border-radius: 4px;
+  background: var(--color-border);
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--charcoal-slate);
+  background: var(--color-secondary-stone);
 }
 
-/* Animation Utilities */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
+/* ============================================
+   Animation - Motion is "the feel of luxury"
+   Slow, deliberate, smooth
+   ============================================ */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from { 
+    opacity: 0; 
+    transform: scale(0.98); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
 }
 
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(20px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+@keyframes revealLine {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: fadeIn var(--duration-page) var(--ease-luxury) forwards;
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 1s ease-out forwards;
+  animation: fadeInUp var(--duration-page) var(--ease-luxury) forwards;
 }
 
 .animate-scale-in {
-  animation: scaleIn 0.6s ease-out forwards;
-}
-
-.animate-slide-in-right {
-  animation: slideInRight 0.6s ease-out forwards;
+  animation: scaleIn var(--duration-page) var(--ease-luxury) forwards;
 }
 
 /* Stagger animations */
@@ -128,148 +220,440 @@ h1, h2, h3, h4, h5, h6 {
 .stagger-5 { animation-delay: 0.5s; }
 .stagger-6 { animation-delay: 0.6s; }
 
-/* Ghost Button Base */
-.btn-ghost {
-  position: relative;
+/* ============================================
+   Buttons - "The CTA"
+   Feel like physical switches or pressed card
+   ============================================ */
+
+/* Primary Button - "The Statement" */
+.btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 32px;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-lato), system-ui, sans-serif;
   font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 2px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--color-primary-void);
+  color: var(--color-primary-paper);
+  border: none;
+  border-radius: 0; /* Sharp rectangles */
+  cursor: pointer;
+  transition: all var(--duration-micro) var(--ease-luxury);
+}
+
+.btn-primary:hover {
+  background: #1a1d24; /* 5% lighter */
+  transform: translateY(-2px);
+}
+
+/* Secondary Button - "The Outline" */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-lato), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   background: transparent;
-  border: 1px solid currentColor;
+  color: var(--color-primary-void);
+  border: 1px solid var(--color-primary-void);
+  border-radius: 0;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
+  transition: all var(--duration-micro) var(--ease-luxury);
 }
 
-.btn-ghost::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: -1;
+.btn-secondary:hover {
+  background: var(--color-primary-void);
+  color: var(--color-primary-paper);
 }
 
-.btn-ghost:hover::before {
-  transform: scaleX(1);
-  transform-origin: left;
+/* Ghost Button (for dark backgrounds) */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-lato), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--color-primary-paper);
+  border: 1px solid rgba(244, 241, 237, 0.3);
+  border-radius: 0;
+  cursor: pointer;
+  transition: all var(--duration-micro) var(--ease-luxury);
 }
 
 .btn-ghost:hover {
-  color: var(--alabaster-silk);
+  background: var(--color-primary-paper);
+  color: var(--color-primary-void);
+  border-color: var(--color-primary-paper);
+  transform: translateY(-2px);
 }
 
-.btn-ghost-light {
-  color: var(--alabaster-silk);
-  border-color: var(--alabaster-silk);
-}
-
-.btn-ghost-light:hover {
-  color: var(--midnight-obsidian);
-}
-
-.btn-ghost-dark {
-  color: var(--midnight-obsidian);
-  border-color: var(--midnight-obsidian);
-}
-
-.btn-ghost-dark:hover {
-  color: var(--alabaster-silk);
-}
-
-/* Gold Link */
-.link-gold {
-  position: relative;
-  color: var(--champagne-gold);
-  text-decoration: none;
+/* Text Link - "The Whisper" */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-lato), system-ui, sans-serif;
   font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 2px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  color: var(--color-primary-void);
+  text-decoration: none;
+  position: relative;
 }
 
-.link-gold::after {
+.link-arrow::after {
   content: '';
   position: absolute;
-  left: 0;
   bottom: -2px;
-  width: 100%;
+  left: 0;
+  width: 0;
   height: 1px;
-  background: var(--champagne-gold);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: currentColor;
+  transition: width var(--duration-micro) var(--ease-luxury);
 }
 
-.link-gold:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+.link-arrow:hover::after {
+  width: calc(100% - 20px);
 }
 
-/* Section spacing */
+.link-arrow svg,
+.link-arrow .arrow {
+  transition: transform var(--duration-micro) var(--ease-luxury);
+}
+
+.link-arrow:hover svg,
+.link-arrow:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   Section Spacing - "The Breath"
+   ============================================ */
 .section-padding {
-  padding: 120px 0;
+  padding: var(--space-xl) 0;
+}
+
+.section-padding-sm {
+  padding: var(--space-lg) 0;
 }
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 80px 0;
+    padding: var(--space-lg) 0;
+  }
+  .section-padding-sm {
+    padding: 48px 0;
   }
 }
 
-/* Container */
+/* ============================================
+   Container - The Grid
+   ============================================ */
 .container-luxury {
-  max-width: 1440px;
+  max-width: calc(1280px + 160px);
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 80px; /* Desktop: 80px Margins */
+}
+
+@media (max-width: 1024px) {
+  .container-luxury {
+    padding: 0 48px; /* Tablet: 48px Margins */
+  }
 }
 
 @media (max-width: 768px) {
   .container-luxury {
-    padding: 0 24px;
+    padding: 0 20px; /* Mobile: 20px Margins */
   }
 }
 
-/* Text utilities */
-.text-label {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+/* ============================================
+   Cards - Property Previews
+   ============================================ */
+.card {
+  background: transparent; /* No background color */
+  overflow: hidden;
+  transition: transform var(--duration-micro) var(--ease-luxury);
 }
 
-/* Image hover effect */
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* Image hover - slow zoom */
 .img-hover-zoom {
   overflow: hidden;
 }
 
 .img-hover-zoom img {
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.6s var(--ease-luxury);
 }
 
 .img-hover-zoom:hover img {
   transform: scale(1.05);
 }
 
-/* Glassmorphism */
-.glass {
-  background: rgba(10, 10, 11, 0.8);
+/* ============================================
+   Borders & Dividers - "The Hairline"
+   ============================================ */
+.divider {
+  height: 1px;
+  background: var(--color-border);
+  width: 100%;
+}
+
+.divider-dark {
+  background: rgba(244, 241, 237, 0.1);
+}
+
+/* ============================================
+   Form Inputs - "The Architectural Line"
+   ============================================ */
+.input-line {
+  width: 100%;
+  padding: 12px 0;
+  font-family: var(--font-lato), system-ui, sans-serif;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  outline: none;
+  transition: border-color var(--duration-micro) var(--ease-luxury);
+}
+
+.input-line:focus {
+  border-bottom-width: 2px;
+  border-bottom-color: var(--color-accent-gilt);
+}
+
+.input-line::placeholder {
+  color: var(--color-secondary-stone);
+}
+
+/* Floating label */
+.input-label {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-secondary-stone);
+  margin-bottom: var(--space-xs);
+}
+
+/* ============================================
+   Dark Sections
+   ============================================ */
+.section-dark {
+  background: var(--color-primary-void);
+  color: var(--color-primary-paper);
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4,
+.section-dark h5,
+.section-dark h6 {
+  color: var(--color-primary-paper);
+}
+
+/* Moss Section - Alternative dark */
+.section-moss {
+  background: var(--color-secondary-moss);
+  color: var(--color-primary-paper);
+}
+
+/* ============================================
+   Overlay Gradients
+   ============================================ */
+.gradient-overlay-hero {
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 17, 21, 0.3) 0%,
+    rgba(15, 17, 21, 0.5) 50%,
+    rgba(15, 17, 21, 0.85) 100%
+  );
+}
+
+.gradient-overlay-subtle {
+  background: linear-gradient(
+    to top,
+    rgba(15, 17, 21, 0.7) 0%,
+    rgba(15, 17, 21, 0.2) 50%,
+    transparent 100%
+  );
+}
+
+/* ============================================
+   Property Info Table
+   ============================================ */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+/* ============================================
+   Status Pills
+   ============================================ */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--color-primary-paper);
+  border: 1px solid var(--color-accent-gilt);
+  color: var(--color-accent-gilt);
+  border-radius: 0;
+}
+
+/* ============================================
+   Navigation
+   ============================================ */
+.nav-link {
+  font-family: var(--font-lato), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary-void);
+  text-decoration: none;
+  transition: color var(--duration-micro) var(--ease-luxury);
+}
+
+.nav-link:hover {
+  color: var(--color-accent-gilt);
+}
+
+.nav-link-light {
+  color: var(--color-primary-paper);
+}
+
+.nav-link-light:hover {
+  color: var(--color-accent-gilt);
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer {
+  background: var(--color-primary-void);
+  color: var(--color-primary-paper);
+}
+
+.footer h1,
+.footer h2,
+.footer h3,
+.footer h4,
+.footer h5,
+.footer h6 {
+  color: var(--color-primary-paper);
+}
+
+/* ============================================
+   Glass Effects
+   ============================================ */
+.glass-light {
+  background: rgba(244, 241, 237, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
 
-/* Gradient overlays */
-.gradient-overlay {
-  background: linear-gradient(to top, rgba(10, 10, 11, 0.9) 0%, rgba(10, 10, 11, 0.4) 50%, transparent 100%);
+.glass-dark {
+  background: rgba(15, 17, 21, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
-.gradient-overlay-full {
-  background: linear-gradient(to bottom, rgba(10, 10, 11, 0.6) 0%, rgba(10, 10, 11, 0.3) 100%);
+/* ============================================
+   Bento Grid for Gallery
+   ============================================ */
+.bento-grid {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(200px, auto);
 }
+
+.bento-item {
+  overflow: hidden;
+  position: relative;
+}
+
+.bento-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bento-item-lg {
+  grid-column: span 5;
+  grid-row: span 2;
+}
+
+.bento-item-md {
+  grid-column: span 4;
+}
+
+.bento-item-sm {
+  grid-column: span 3;
+}
+
+.bento-item-wide {
+  grid-column: span 12;
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .bento-item-lg,
+  .bento-item-md,
+  .bento-item-sm {
+    grid-column: span 4;
+  }
+}
+
+/* ============================================
+   Utility: Gilt Accent Color
+   ============================================ */
+.text-gilt {
+  color: var(--color-accent-gilt);
+}
+
+.bg-gilt {
+  background: var(--color-accent-gilt);
+}
+
+.border-gilt {
+  border-color: var(--color-accent-gilt);
+}
+
+/* ============================================
+   "True luxury is the absence of friction."
+   ============================================ */
