@@ -1,8 +1,5 @@
-"use client";
-
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
 
 const services = [
   {
@@ -128,28 +125,8 @@ const services = [
 ];
 
 export function InvestorServices() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} className="section-padding bg-paper">
+    <section className="section-padding bg-paper">
       <div className="container-luxury">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-24">
@@ -166,11 +143,7 @@ export function InvestorServices() {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`group transition-all duration-[800ms] ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
+              className="group opacity-100 translate-y-0"
               style={{ 
                 transitionDelay: `${index * 100}ms`,
                 transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"

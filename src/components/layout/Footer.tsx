@@ -1,7 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
+import { BackToTopButton } from "@/components/layout/BackToTopButton";
 
 const navLinks = [
   { href: "/properties", label: "Properties" },
@@ -16,6 +15,8 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="container-luxury">
@@ -96,15 +97,9 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-paper/10 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[11px] tracking-[0.05em] text-paper/30">
-            © {new Date().getFullYear()} Echelon Elite. All rights reserved.
+            © {year} Echelon Elite. All rights reserved.
           </p>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-[11px] tracking-[0.05em] text-paper/30 hover:text-paper/60 transition-colors duration-[400ms] cursor-pointer"
-            style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
-          >
-            Back to top ↑
-          </button>
+          <BackToTopButton />
         </div>
       </div>
     </footer>

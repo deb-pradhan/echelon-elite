@@ -34,6 +34,7 @@ export function PropertyCard({
           src={image}
           alt={title}
           fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           className="object-cover transition-transform duration-[600ms] group-hover:scale-105"
           style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
         />

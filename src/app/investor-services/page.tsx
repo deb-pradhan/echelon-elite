@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -129,14 +130,15 @@ export default function InvestorServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[70vh] flex items-center pt-40 pb-24">
+      <section className="relative min-h-[70vh] flex items-center pt-40 pb-24 overflow-hidden">
         <div className="absolute inset-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop')",
-            }}
+          <Image
+            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2400&auto=format&fit=crop"
+            alt="Luxury property in Dubai"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-void/80" />
         </div>
