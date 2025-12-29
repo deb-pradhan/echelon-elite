@@ -6,21 +6,21 @@ import { useEffect, useRef, useState } from "react";
 const features = [
   {
     number: "01",
-    title: "Golden Visa Expertise",
-    description:
-      "Specialized guidance through Dubai's Golden Visa process. We ensure your property investment qualifies and handle the complete application.",
-  },
-  {
-    number: "02",
     title: "Ultra-Premium Portfolio",
     description:
       "Access to exclusive off-market properties and pre-launch opportunities from Dubai's most prestigious developers.",
   },
   {
-    number: "03",
+    number: "02",
     title: "White-Glove Service",
     description:
       "From property selection to post-purchase concierge, we provide end-to-end support for international investors.",
+  },
+  {
+    number: "03",
+    title: "Golden Visa Expertise",
+    description:
+      "Specialized guidance through Dubai's Golden Visa process. We ensure your property investment qualifies and handle the complete application.",
   },
 ];
 
@@ -54,29 +54,8 @@ export function WhyEchelon() {
             <SectionHeading
               label="Why Choose Us"
               title="The Echelon Distinction"
-              subtitle="We don't simply sell properties. We craft investment strategies for those who demand excellence."
+              subtitle="RERA-approved experts who craft investment strategies for those who demand excellence."
             />
-            <div className="mt-16">
-              <div className="flex items-center gap-8 text-stone">
-                <div className="text-center">
-                  <span className="font-[family-name:var(--font-playfair)] text-4xl text-void block tracking-[-0.02em]">
-                    500+
-                  </span>
-                  <span className="text-[11px] uppercase tracking-[0.1em] mt-2 block">
-                    Properties Sold
-                  </span>
-                </div>
-                <div className="w-[1px] h-14 bg-void/10" />
-                <div className="text-center">
-                  <span className="font-[family-name:var(--font-playfair)] text-4xl text-void block tracking-[-0.02em]">
-                    AED 2B+
-                  </span>
-                  <span className="text-[11px] uppercase tracking-[0.1em] mt-2 block">
-                    Transaction Value
-                  </span>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Right Column - Features */}

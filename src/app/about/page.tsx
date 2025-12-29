@@ -29,12 +29,6 @@ const values = [
   },
 ];
 
-const stats = [
-  { value: "AED 2B+", label: "Transaction Volume" },
-  { value: "500+", label: "Properties Sold" },
-  { value: "40+", label: "Nationalities Served" },
-  { value: "98%", label: "Client Satisfaction" },
-];
 
 export default function AboutPage() {
   return (
@@ -127,23 +121,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-32 bg-void">
-        <div className="container-luxury">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <span className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl text-gilt block mb-3 tracking-[-0.02em]">
-                  {stat.value}
-                </span>
-                <span className="text-[11px] uppercase tracking-[0.1em] text-paper/50">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Our Values */}
       <section className="section-padding bg-paper">
@@ -220,7 +197,7 @@ export default function AboutPage() {
                   <span className="text-paper/40 text-sm">
                     RERA License
                   </span>
-                  <p className="text-paper text-lg mt-2">ORN: 12345</p>
+                  <p className="text-paper text-lg mt-2">ORN: 52350</p>
                 </div>
                 <div className="h-[1px] bg-paper/10" />
                 <div>

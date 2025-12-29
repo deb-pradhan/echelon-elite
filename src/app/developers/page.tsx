@@ -147,15 +147,7 @@ export default function DevelopersPage() {
                   </p>
 
                   {/* Stats */}
-                  <div className="grid grid-cols-3 gap-8 mb-10">
-                    <div>
-                      <span className="font-[family-name:var(--font-playfair)] text-2xl text-void block tracking-[-0.01em]">
-                        {developer.properties}
-                      </span>
-                      <span className="text-[11px] uppercase tracking-[0.1em] text-stone">
-                        Properties
-                      </span>
-                    </div>
+                  <div className="grid grid-cols-2 gap-8 mb-10">
                     <div>
                       <span className="font-[family-name:var(--font-playfair)] text-2xl text-void block tracking-[-0.01em]">
                         {developer.established}

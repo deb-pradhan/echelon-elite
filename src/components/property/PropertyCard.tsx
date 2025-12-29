@@ -37,20 +37,18 @@ export function PropertyCard({
           className="object-cover transition-transform duration-[600ms] group-hover:scale-105"
           style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
         />
+        {/* Developer Tag */}
+        <div className="absolute top-5 left-5">
+          <span className="text-[10px] uppercase tracking-[0.15em] text-paper font-normal bg-void/80 backdrop-blur-sm px-4 py-2">
+            {developer}
+          </span>
+        </div>
         {/* Status Pill */}
         <div className="absolute top-5 right-5">
           <span className="status-pill">
             {status === "available" ? "Open" : "Sold"}
           </span>
         </div>
-        {/* Golden Visa Badge */}
-        {goldenVisaEligible && (
-          <div className="absolute top-5 left-5">
-            <span className="text-[10px] uppercase tracking-[0.15em] text-paper font-normal bg-void/80 backdrop-blur-sm px-4 py-2">
-              Golden Visa
-            </span>
-          </div>
-        )}
         {/* Subtle overlay on hover */}
         <div 
           className="absolute inset-0 bg-void/0 group-hover:bg-void/10 transition-colors duration-[400ms]"
@@ -60,12 +58,8 @@ export function PropertyCard({
 
       {/* Content - Typography below image per design system */}
       <div>
-        {/* Developer Label */}
-        <span className="text-label text-stone">
-          {developer}
-        </span>
         {/* Title - Serif H3 */}
-        <h3 className="font-[family-name:var(--font-playfair)] text-2xl mt-3 text-void group-hover:text-gilt transition-colors duration-[400ms] tracking-[-0.01em]"
+        <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-void group-hover:text-gilt transition-colors duration-[400ms] tracking-[-0.01em]"
           style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
         >
           {title}

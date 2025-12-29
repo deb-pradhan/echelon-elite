@@ -50,8 +50,8 @@ export function FeaturedProperties() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-20">
           <SectionHeading
-            label="Premium Collection"
-            title="Featured Properties"
+            label="Featured Properties"
+            title="Echelon's Top Choices"
             subtitle="Handpicked luxury residences for the discerning investor"
           />
           <div className="mt-10 md:mt-0">

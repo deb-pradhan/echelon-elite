@@ -5,7 +5,6 @@ import { GoldenVisaCTA } from "@/components/sections/GoldenVisaCTA";
 import { Communities } from "@/components/sections/Communities";
 import { InvestorServices } from "@/components/sections/InvestorServices";
 import { Trust } from "@/components/sections/Trust";
-import { ContactCTA } from "@/components/sections/ContactCTA";
 
 export default function Home() {
   return (
@@ -30,9 +29,6 @@ export default function Home() {
 
       {/* Client Trust Elements (Awards, group company details) */}
       <Trust />
-
-      {/* Concierge Support / Contact CTA */}
-      <ContactCTA />
     </>
   );
 }

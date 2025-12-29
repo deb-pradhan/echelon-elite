@@ -38,24 +38,7 @@ export function Hero() {
 
       {/* Main Content Grid */}
       <div className="relative z-10 container-luxury">
-        <div className="grid lg:grid-cols-12 gap-8 items-center">
-          {/* Left Content */}
-          <div className="lg:col-span-7 lg:pl-12">
-            {/* Eyebrow / Label */}
-            <div
-              className={`flex items-center gap-4 mb-10 transition-all duration-[1000ms] ${
-                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ 
-                transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
-              }}
-            >
-              <span className="w-12 h-px bg-gilt" />
-              <span className="text-label text-gilt">
-                Property Finder Service
-              </span>
-            </div>
-
+        <div className="max-w-4xl lg:pl-12">
             {/* Main Heading - Display XL per design system */}
             <h1
               className={`font-[family-name:var(--font-playfair)] text-5xl md:text-7xl lg:text-[96px] leading-[1] tracking-[-0.03em] mb-10 transition-all duration-[1000ms] ${
@@ -85,8 +68,7 @@ export function Hero() {
                 letterSpacing: "0.01em"
               }}
             >
-              We handpick superior residences aligned with your vision. 
-              Experience Dubai&apos;s finest properties with white-glove service.
+              Dubai&apos;s premier off-market properties. Curated for discerning investors.
             </p>
 
             {/* CTAs */}
@@ -100,54 +82,12 @@ export function Hero() {
               }}
             >
               <Link href="/properties" className="btn-primary bg-gilt text-void hover:bg-paper">
-                View Properties
+                View Top Picks
               </Link>
               <Link href="/contact" className="btn-ghost border-paper/30 text-paper hover:bg-paper hover:text-void">
                 Book Consultation
               </Link>
             </div>
-          </div>
-
-          {/* Right Stats Panel - Editorial touch */}
-          <div className="lg:col-span-5 hidden lg:block">
-            <div 
-              className={`ml-auto max-w-xs space-y-8 transition-all duration-[1000ms] ${
-                isLoaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
-              }`}
-              style={{ 
-                transitionDelay: "600ms",
-                transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)"
-              }}
-            >
-              {/* Stats */}
-              <div className="border-l border-paper/20 pl-8">
-                <div className="text-5xl font-[family-name:var(--font-playfair)] text-paper mb-2">
-                  200<span className="text-gilt">+</span>
-                </div>
-                <div className="text-label text-paper/50">
-                  Premium Properties
-                </div>
-              </div>
-              
-              <div className="border-l border-paper/20 pl-8">
-                <div className="text-5xl font-[family-name:var(--font-playfair)] text-paper mb-2">
-                  AED 15<span className="text-gilt">B</span>
-                </div>
-                <div className="text-label text-paper/50">
-                  Total Value Sold
-                </div>
-              </div>
-
-              <div className="border-l border-paper/20 pl-8">
-                <div className="text-5xl font-[family-name:var(--font-playfair)] text-paper mb-2">
-                  12<span className="text-gilt">+</span>
-                </div>
-                <div className="text-label text-paper/50">
-                  Years of Excellence
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
