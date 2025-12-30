@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { href: "/properties", label: "Properties" },
@@ -13,9 +14,17 @@ const navLinks = [
   { href: "/about", label: "About" },
 ];
 
+// Pages with light backgrounds that need dark header
+const lightBackgroundPages = ["/contact"];
+
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  
+  // Check if current page has a light background
+  const isLightPage = lightBackgroundPages.includes(pathname);
+  const useDarkHeader = isScrolled || isLightPage;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,6 +55,8 @@ export function Header() {
             ? "z-[60] bg-transparent py-6"
             : isScrolled
             ? "z-50 bg-paper/95 backdrop-blur-md py-4"
+            : isLightPage
+            ? "z-50 bg-paper py-6"
             : "z-50 bg-transparent py-6"
         }`}
         style={{ transitionTimingFunction: "cubic-bezier(0.2, 0.0, 0.2, 1)" }}
@@ -55,7 +66,7 @@ export function Header() {
             {/* Logo */}
             <Link href="/" className="relative z-[60]">
               <Image
-                src={isScrolled && !isMobileMenuOpen ? "/images/logo-dark.svg" : "/images/logo-light.svg"}
+                src={useDarkHeader && !isMobileMenuOpen ? "/images/logo-dark.svg" : "/images/logo-light.svg"}
                 alt="Echelon Elite"
                 width={140}
                 height={32}
@@ -71,7 +82,7 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   className={`text-[12px] font-normal tracking-[0.1em] uppercase transition-colors duration-[400ms] ${
-                    isScrolled
+                    useDarkHeader
                       ? "text-void hover:text-gilt"
                       : "text-paper hover:text-gilt"
                   }`}
@@ -87,7 +98,7 @@ export function Header() {
               <Link
                 href="/contact"
                 className={`inline-flex items-center justify-center px-8 py-3 text-[12px] font-normal tracking-[0.1em] uppercase transition-all duration-[400ms] ${
-                  isScrolled
+                  useDarkHeader
                     ? "bg-void text-paper hover:bg-[#1a1d24] hover:-translate-y-0.5"
                     : "border border-paper/30 text-paper hover:bg-paper hover:text-void"
                 }`}
@@ -109,7 +120,7 @@ export function Header() {
                   className={`block w-full h-[1.5px] origin-center transition-all duration-[400ms] ${
                     isMobileMenuOpen
                       ? "rotate-45 translate-y-[9px] bg-white"
-                      : isScrolled
+                      : useDarkHeader
                       ? "bg-void"
                       : "bg-white"
                   }`}
@@ -119,7 +130,7 @@ export function Header() {
                   className={`block w-full h-[1.5px] transition-all duration-[400ms] ${
                     isMobileMenuOpen
                       ? "opacity-0 scale-x-0"
-                      : isScrolled
+                      : useDarkHeader
                       ? "bg-void"
                       : "bg-white"
                   }`}
@@ -129,7 +140,7 @@ export function Header() {
                   className={`block w-full h-[1.5px] origin-center transition-all duration-[400ms] ${
                     isMobileMenuOpen
                       ? "-rotate-45 -translate-y-[9px] bg-white"
-                      : isScrolled
+                      : useDarkHeader
                       ? "bg-void"
                       : "bg-white"
                   }`}

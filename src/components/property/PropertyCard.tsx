@@ -11,7 +11,7 @@ interface PropertyCardProps {
   bedrooms?: string;
   size?: string;
   goldenVisaEligible?: boolean;
-  status?: "available" | "sold";
+  status?: "available" | "sold" | "off-plan";
 }
 
 export function PropertyCard({
@@ -46,7 +46,7 @@ export function PropertyCard({
         {/* Status Pill */}
         <div className="absolute top-5 right-5">
           <span className="status-pill">
-            {status === "available" ? "Open" : "Sold"}
+            {status === "available" ? "Open" : status === "off-plan" ? "Off-Plan" : "Sold"}
           </span>
         </div>
         {/* Subtle overlay on hover */}

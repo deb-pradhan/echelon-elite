@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 import { PropertyCard } from "@/components/property/PropertyCard";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { client, isSanityConfigured } from "../../../sanity/lib/client";
+import { allPropertiesQuery, propertyCountsQuery } from "../../../sanity/lib/queries";
+import type { Property, PropertyCounts } from "../../../sanity/lib/types";
 
 export const metadata: Metadata = {
   title: "Luxury Properties for Sale in Dubai | Echelon Elite",
@@ -10,126 +13,184 @@ export const metadata: Metadata = {
     "Dubai luxury properties, apartments for sale Dubai, villas Dubai, branded residences, off-plan Dubai, Golden Visa properties",
 };
 
-const properties = [
+// Fallback data for when Sanity is not configured
+const fallbackProperties: Property[] = [
   {
-    id: "1",
+    _id: "1",
     title: "The Address Residences",
+    slug: "the-address-residences",
     location: "Downtown Dubai",
-    price: "AED 5,500,000",
+    priceDisplay: "AED 5,500,000",
     image:
       "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2071&auto=format&fit=crop",
     developer: "Emaar",
     bedrooms: "2-4 Bedrooms",
     size: "2,400 - 4,800 sq.ft",
     goldenVisaEligible: true,
+    status: "available",
   },
   {
-    id: "2",
+    _id: "2",
     title: "One at Palm Jumeirah",
+    slug: "one-at-palm-jumeirah",
     location: "Palm Jumeirah",
-    price: "AED 12,000,000",
+    priceDisplay: "AED 12,000,000",
     image:
       "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop",
     developer: "Omniyat",
     bedrooms: "3-5 Bedrooms",
     size: "4,200 - 8,500 sq.ft",
     goldenVisaEligible: true,
+    status: "available",
   },
   {
-    id: "3",
+    _id: "3",
     title: "Sobha Hartland Villas",
+    slug: "sobha-hartland-villas",
     location: "Mohammed Bin Rashid City",
-    price: "AED 8,200,000",
+    priceDisplay: "AED 8,200,000",
     image:
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop",
     developer: "Sobha",
     bedrooms: "4-6 Bedrooms",
     size: "5,800 - 12,000 sq.ft",
     goldenVisaEligible: true,
+    status: "available",
   },
   {
-    id: "4",
+    _id: "4",
     title: "Damac Bay by Cavalli",
+    slug: "damac-bay-by-cavalli",
     location: "Dubai Harbour",
-    price: "AED 3,800,000",
+    priceDisplay: "AED 3,800,000",
     image:
       "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop",
     developer: "Damac",
     bedrooms: "1-3 Bedrooms",
     size: "1,200 - 3,500 sq.ft",
     goldenVisaEligible: true,
+    status: "available",
   },
   {
-    id: "5",
+    _id: "5",
     title: "Burj Binghatti Jacob & Co",
+    slug: "burj-binghatti-jacob-co",
     location: "Business Bay",
-    price: "AED 15,000,000",
+    priceDisplay: "AED 15,000,000",
     image:
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
     developer: "Binghatti",
     bedrooms: "2-4 Bedrooms",
     size: "2,800 - 6,000 sq.ft",
     goldenVisaEligible: true,
+    status: "available",
   },
   {
-    id: "6",
+    _id: "6",
     title: "Creek Harbour Residences",
+    slug: "creek-harbour-residences",
     location: "Dubai Creek Harbour",
-    price: "AED 4,200,000",
+    priceDisplay: "AED 4,200,000",
     image:
       "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=2070&auto=format&fit=crop",
     developer: "Emaar",
     bedrooms: "2-3 Bedrooms",
     size: "1,800 - 3,200 sq.ft",
     goldenVisaEligible: true,
+    status: "available",
   },
   {
-    id: "7",
+    _id: "7",
     title: "Palm Jumeirah Signature Villas",
+    slug: "palm-jumeirah-signature-villas",
     location: "Palm Jumeirah",
-    price: "AED 35,000,000",
+    priceDisplay: "AED 35,000,000",
     image:
       "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2074&auto=format&fit=crop",
     developer: "Nakheel",
     bedrooms: "5-7 Bedrooms",
     size: "12,000 - 25,000 sq.ft",
     goldenVisaEligible: true,
+    status: "available",
   },
   {
-    id: "8",
+    _id: "8",
     title: "W Residences Dubai",
+    slug: "w-residences-dubai",
     location: "Palm Jumeirah",
-    price: "AED 7,500,000",
+    priceDisplay: "AED 7,500,000",
     image:
       "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=2084&auto=format&fit=crop",
     developer: "Al Sharq",
     bedrooms: "2-4 Bedrooms",
     size: "2,500 - 5,500 sq.ft",
     goldenVisaEligible: true,
+    status: "available",
   },
   {
-    id: "9",
+    _id: "9",
     title: "Ellington Beach House",
+    slug: "ellington-beach-house",
     location: "Palm Jumeirah",
-    price: "AED 6,800,000",
+    priceDisplay: "AED 6,800,000",
     image:
       "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?q=80&w=2053&auto=format&fit=crop",
     developer: "Ellington",
     bedrooms: "3-4 Bedrooms",
     size: "3,200 - 5,800 sq.ft",
     goldenVisaEligible: true,
+    status: "available",
   },
 ];
 
-const categories = [
-  { label: "All Properties", value: "all", count: properties.length },
-  { label: "Apartments", value: "apartments", count: 5 },
-  { label: "Villas", value: "villas", count: 3 },
-  { label: "Branded Residences", value: "branded", count: 4 },
-  { label: "Off-Plan", value: "offplan", count: 6 },
-];
+const fallbackCounts: PropertyCounts = {
+  total: 9,
+  apartments: 5,
+  villas: 3,
+  branded: 4,
+  offplan: 6,
+};
 
-export default function PropertiesPage() {
+async function getProperties(): Promise<Property[]> {
+  if (!isSanityConfigured() || !client) {
+    return fallbackProperties;
+  }
+  
+  try {
+    const properties = await client.fetch<Property[]>(allPropertiesQuery);
+    return properties && properties.length > 0 ? properties : fallbackProperties;
+  } catch {
+    return fallbackProperties;
+  }
+}
+
+async function getPropertyCounts(): Promise<PropertyCounts> {
+  if (!isSanityConfigured() || !client) {
+    return fallbackCounts;
+  }
+  
+  try {
+    const counts = await client.fetch<PropertyCounts>(propertyCountsQuery);
+    return counts && counts.total > 0 ? counts : fallbackCounts;
+  } catch {
+    return fallbackCounts;
+  }
+}
+
+export default async function PropertiesPage() {
+  const [properties, counts] = await Promise.all([
+    getProperties(),
+    getPropertyCounts(),
+  ]);
+
+  const categories = [
+    { label: "All Properties", value: "all", count: counts.total },
+    { label: "Apartments", value: "apartments", count: counts.apartments },
+    { label: "Villas", value: "villas", count: counts.villas },
+    { label: "Branded Residences", value: "branded", count: counts.branded },
+    { label: "Off-Plan", value: "offplan", count: counts.offplan },
+  ];
+
   return (
     <>
       {/* Hero */}
@@ -179,7 +240,19 @@ export default function PropertiesPage() {
         <div className="container-luxury">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
             {properties.map((property) => (
-              <PropertyCard key={property.id} {...property} />
+              <PropertyCard
+                key={property._id}
+                id={property.slug || property._id}
+                title={property.title}
+                location={property.location}
+                price={property.priceDisplay}
+                image={property.image}
+                developer={typeof property.developer === "string" ? property.developer : property.developer?.name || ""}
+                bedrooms={property.bedrooms}
+                size={property.size}
+                goldenVisaEligible={property.goldenVisaEligible}
+                status={property.status}
+              />
             ))}
           </div>
 

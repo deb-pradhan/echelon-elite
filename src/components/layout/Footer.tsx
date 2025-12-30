@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const navigationLinks = {
   properties: [
@@ -61,30 +62,35 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const pathname = usePathname();
+  const isContactPage = pathname === "/contact";
+
   return (
     <footer className="footer">
       <div className="container-luxury">
-        {/* Contact CTA Section */}
-        <div className="border-t border-paper/10 py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
-            <div className="lg:col-span-5">
-              <h2 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl font-normal tracking-[-0.02em] text-white">
-                Contact
-              </h2>
-            </div>
-            <div className="lg:col-span-7 lg:max-w-lg">
-              <p className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl italic font-normal text-paper/90 mb-6">
-                Let&apos;s start a conversation
-              </p>
-              <p className="text-paper/50 mb-12 leading-relaxed">
-                Join us for a chat to talk about your property investment goals
-              </p>
-              <Link href="/contact" className="btn-ghost">
-                Get in touch
-              </Link>
+        {/* Contact CTA Section - Hidden on contact page */}
+        {!isContactPage && (
+          <div className="border-t border-paper/10 py-32">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
+              <div className="lg:col-span-5">
+                <h2 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl font-normal tracking-[-0.02em] text-white">
+                  Contact
+                </h2>
+              </div>
+              <div className="lg:col-span-7 lg:max-w-lg">
+                <p className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl italic font-normal text-paper/90 mb-6">
+                  Let&apos;s start a conversation
+                </p>
+                <p className="text-paper/50 mb-12 leading-relaxed">
+                  Join us for a chat to talk about your property investment goals
+                </p>
+                <Link href="/contact" className="btn-ghost">
+                  Get in touch
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Main Footer Links */}
         <div className="border-t border-paper/10 py-20">

@@ -2,6 +2,9 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { client, isSanityConfigured } from "../../../sanity/lib/client";
+import { developersQuery } from "../../../sanity/lib/queries";
+import type { Developer } from "../../../sanity/lib/types";
 
 export const metadata: Metadata = {
   title: "Dubai Property Developers | Emaar, Sobha, Damac, Nakheel | Echelon Elite",
@@ -11,8 +14,10 @@ export const metadata: Metadata = {
     "Emaar Dubai, Sobha properties, Damac residences, Nakheel developments, Danube homes, Dubai developers",
 };
 
-const developers = [
+// Fallback data for when Sanity is not configured
+const fallbackDevelopers: Developer[] = [
   {
+    _id: "1",
     slug: "emaar",
     name: "Emaar Properties",
     logo: "EMAAR",
@@ -22,11 +27,11 @@ const developers = [
     description:
       "The developer behind Burj Khalifa and Dubai Mall, Emaar is synonymous with luxury and excellence. Their developments define Dubai's skyline and set global standards for quality.",
     projects: ["Downtown Dubai", "Dubai Hills Estate", "Dubai Creek Harbour", "Arabian Ranches"],
-    properties: 125,
     established: "1997",
     highlight: "World's Tallest Tower - Burj Khalifa",
   },
   {
+    _id: "2",
     slug: "sobha",
     name: "Sobha Realty",
     logo: "SOBHA",
@@ -36,11 +41,11 @@ const developers = [
     description:
       "Known for backward integration and craftsmanship, Sobha delivers exceptional quality with in-house capabilities covering every aspect of development and construction.",
     projects: ["Sobha Hartland", "Sobha One", "Sobha Seahaven", "Sobha Reserve"],
-    properties: 68,
     established: "1976",
     highlight: "Complete In-House Manufacturing",
   },
   {
+    _id: "3",
     slug: "damac",
     name: "DAMAC Properties",
     logo: "DAMAC",
@@ -50,11 +55,11 @@ const developers = [
     description:
       "Pioneers of branded residences in the Middle East, DAMAC partners with world-renowned brands like Versace, Fendi, and Cavalli to create unique lifestyle experiences.",
     projects: ["DAMAC Hills", "DAMAC Lagoons", "Aykon City", "DAMAC Bay"],
-    properties: 95,
     established: "2002",
     highlight: "Branded Residences Pioneer",
   },
   {
+    _id: "4",
     slug: "nakheel",
     name: "Nakheel",
     logo: "NAKHEEL",
@@ -64,11 +69,11 @@ const developers = [
     description:
       "Creator of Palm Jumeirah and The World islands, Nakheel has transformed Dubai's coastline and established itself as a master developer of iconic destinations.",
     projects: ["Palm Jumeirah", "The World", "Deira Islands", "Ibn Battuta Mall"],
-    properties: 82,
     established: "2000",
     highlight: "Palm Jumeirah Developer",
   },
   {
+    _id: "5",
     slug: "danube",
     name: "Danube Properties",
     logo: "DANUBE",
@@ -78,13 +83,27 @@ const developers = [
     description:
       "Making luxury accessible with attractive payment plans, Danube has revolutionized Dubai's mid-market segment with high-quality developments and innovative financing.",
     projects: ["Bayz", "Elitz", "Gemz", "Pearlz"],
-    properties: 45,
     established: "2014",
     highlight: "Flexible Payment Plans",
   },
 ];
 
-export default function DevelopersPage() {
+async function getDevelopers(): Promise<Developer[]> {
+  if (!isSanityConfigured() || !client) {
+    return fallbackDevelopers;
+  }
+  
+  try {
+    const developers = await client.fetch<Developer[]>(developersQuery);
+    return developers && developers.length > 0 ? developers : fallbackDevelopers;
+  } catch {
+    return fallbackDevelopers;
+  }
+}
+
+export default async function DevelopersPage() {
+  const developers = await getDevelopers();
+
   return (
     <>
       {/* Hero */}
@@ -111,7 +130,7 @@ export default function DevelopersPage() {
           <div className="space-y-40">
             {developers.map((developer, index) => (
               <div
-                key={developer.slug}
+                key={developer._id}
                 className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"
               >
                 {/* Image */}
@@ -120,12 +139,14 @@ export default function DevelopersPage() {
                     index % 2 === 1 ? "lg:order-2" : ""
                   }`}
                 >
-                  <Image
-                    src={developer.image}
-                    alt={developer.name}
-                    fill
-                    className="object-cover"
-                  />
+                  {developer.image && (
+                    <Image
+                      src={developer.image}
+                      alt={developer.name}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
                   {/* Logo Overlay */}
                   <div className="absolute top-8 left-8 bg-void/80 backdrop-blur-sm px-8 py-4">
                     <span className="font-[family-name:var(--font-playfair)] text-xl text-paper">
@@ -136,26 +157,32 @@ export default function DevelopersPage() {
 
                 {/* Content */}
                 <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                  <span className="text-label text-gilt block mb-5">
-                    {developer.tagline}
-                  </span>
+                  {developer.tagline && (
+                    <span className="text-label text-gilt block mb-5">
+                      {developer.tagline}
+                    </span>
+                  )}
                   <h2 className="font-[family-name:var(--font-playfair)] text-4xl text-void mb-5 tracking-[-0.02em]">
                     {developer.name}
                   </h2>
-                  <p className="text-stone leading-relaxed mb-10">
-                    {developer.description}
-                  </p>
+                  {developer.description && (
+                    <p className="text-stone leading-relaxed mb-10">
+                      {developer.description}
+                    </p>
+                  )}
 
                   {/* Stats */}
                   <div className="grid grid-cols-2 gap-8 mb-10">
-                    <div>
-                      <span className="font-[family-name:var(--font-playfair)] text-2xl text-void block tracking-[-0.01em]">
-                        {developer.established}
-                      </span>
-                      <span className="text-[11px] uppercase tracking-[0.1em] text-stone">
-                        Established
-                      </span>
-                    </div>
+                    {developer.established && (
+                      <div>
+                        <span className="font-[family-name:var(--font-playfair)] text-2xl text-void block tracking-[-0.01em]">
+                          {developer.established}
+                        </span>
+                        <span className="text-[11px] uppercase tracking-[0.1em] text-stone">
+                          Established
+                        </span>
+                      </div>
+                    )}
                     <div>
                       <span className="font-[family-name:var(--font-playfair)] text-2xl text-gilt block">
                         ★
@@ -167,37 +194,41 @@ export default function DevelopersPage() {
                   </div>
 
                   {/* Projects */}
-                  <div className="mb-10">
-                    <span className="text-label text-stone block mb-4">
-                      Key Projects
-                    </span>
-                    <div className="flex flex-wrap gap-3">
-                      {developer.projects.map((project) => (
-                        <span
-                          key={project}
-                          className="px-5 py-3 bg-void/5 text-sm text-void/70"
-                        >
-                          {project}
-                        </span>
-                      ))}
+                  {developer.projects && developer.projects.length > 0 && (
+                    <div className="mb-10">
+                      <span className="text-label text-stone block mb-4">
+                        Key Projects
+                      </span>
+                      <div className="flex flex-wrap gap-3">
+                        {developer.projects.map((project) => (
+                          <span
+                            key={project}
+                            className="px-5 py-3 bg-void/5 text-sm text-void/70"
+                          >
+                            {project}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   {/* Highlight */}
-                  <div className="flex items-center gap-4 mb-10 text-gilt">
-                    <svg
-                      className="w-5 h-5"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span className="text-sm">{developer.highlight}</span>
-                  </div>
+                  {developer.highlight && (
+                    <div className="flex items-center gap-4 mb-10 text-gilt">
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span className="text-sm">{developer.highlight}</span>
+                    </div>
+                  )}
 
                   <Link
                     href={`/developers/${developer.slug}`}

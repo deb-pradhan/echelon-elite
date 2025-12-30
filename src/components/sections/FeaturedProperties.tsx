@@ -1,49 +1,73 @@
-"use client";
-
 import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PropertyCard } from "@/components/property/PropertyCard";
+import { client, isSanityConfigured } from "../../../sanity/lib/client";
+import { featuredPropertiesQuery } from "../../../sanity/lib/queries";
+import type { Property } from "../../../sanity/lib/types";
 
-const featuredProperties = [
+// Fallback data for when Sanity is not configured or has no data
+const fallbackProperties = [
   {
-    id: "1",
+    _id: "1",
     title: "The Address Residences",
+    slug: "the-address-residences",
     location: "Downtown Dubai",
-    price: "AED 5,500,000",
+    priceDisplay: "AED 5,500,000",
     image:
       "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2071&auto=format&fit=crop",
     developer: "Emaar",
     bedrooms: "2-4 Bedrooms",
     size: "2,400 - 4,800 sq.ft",
     goldenVisaEligible: true,
+    status: "available" as const,
   },
   {
-    id: "2",
+    _id: "2",
     title: "One at Palm Jumeirah",
+    slug: "one-at-palm-jumeirah",
     location: "Palm Jumeirah",
-    price: "AED 12,000,000",
+    priceDisplay: "AED 12,000,000",
     image:
       "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop",
     developer: "Omniyat",
     bedrooms: "3-5 Bedrooms",
     size: "4,200 - 8,500 sq.ft",
     goldenVisaEligible: true,
+    status: "available" as const,
   },
   {
-    id: "3",
+    _id: "3",
     title: "Sobha Hartland Villas",
+    slug: "sobha-hartland-villas",
     location: "Mohammed Bin Rashid City",
-    price: "AED 8,200,000",
+    priceDisplay: "AED 8,200,000",
     image:
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop",
     developer: "Sobha",
     bedrooms: "4-6 Bedrooms",
     size: "5,800 - 12,000 sq.ft",
     goldenVisaEligible: true,
+    status: "available" as const,
   },
 ];
 
-export function FeaturedProperties() {
+async function getFeaturedProperties(): Promise<Property[]> {
+  if (!isSanityConfigured() || !client) {
+    return fallbackProperties;
+  }
+  
+  try {
+    const properties = await client.fetch<Property[]>(featuredPropertiesQuery);
+    return properties && properties.length > 0 ? properties : fallbackProperties;
+  } catch {
+    // Return fallback data if Sanity fetch fails
+    return fallbackProperties;
+  }
+}
+
+export async function FeaturedProperties() {
+  const properties = await getFeaturedProperties();
+
   return (
     <section className="section-padding bg-paper">
       <div className="container-luxury">
@@ -72,8 +96,20 @@ export function FeaturedProperties() {
 
         {/* Properties Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
-          {featuredProperties.map((property) => (
-            <PropertyCard key={property.id} {...property} />
+          {properties.map((property) => (
+            <PropertyCard
+              key={property._id}
+              id={property.slug || property._id}
+              title={property.title}
+              location={property.location}
+              price={property.priceDisplay}
+              image={property.image}
+              developer={typeof property.developer === "string" ? property.developer : property.developer?.name || ""}
+              bedrooms={property.bedrooms}
+              size={property.size}
+              goldenVisaEligible={property.goldenVisaEligible}
+              status={property.status}
+            />
           ))}
         </div>
       </div>
